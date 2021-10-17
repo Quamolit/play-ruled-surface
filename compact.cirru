@@ -7,8 +7,11 @@
     |app.comp.container $ {}
       :ns $ quote
         ns app.comp.container $ :require
-          quatrefoil.alias :refer $ group box sphere point-light ambient-light perspective-camera scene text
+          quatrefoil.alias :refer $ group box sphere point-light ambient-light perspective-camera scene text line tube
           quatrefoil.core :refer $ defcomp >>
+          quatrefoil.comp.control :refer $ comp-position-point
+          quatrefoil.app.materials :refer $ cover-line
+          quatrefoil.math :refer $ v-scale v+ &v+
       :defs $ {}
         |comp-container $ quote
           defcomp comp-container (store)
@@ -24,35 +27,76 @@
                   :near 0.1
                   :far 1000
                   :position $ [] 0 0 100
-                comp-demo
+                comp-ruled-surface $ >> states :ruled
                 ambient-light $ {} (:color 0x666666)
                 ; point-light $ {} (:color 0xffffff) (:intensity 1.4) (:distance 200)
                   :position $ [] 20 40 50
                 ; point-light $ {} (:color 0xffffff) (:intensity 2) (:distance 200)
                   :position $ [] 0 60 0
-        |comp-demo $ quote
-          defcomp comp-demo () $ group ({})
-            box $ {} (:width 16) (:height 4) (:depth 6)
-              :position $ [] -40 0 0
-              :material $ {} (:kind :mesh-lambert) (:color 0x808080) (:opacity 0.6)
-              :event $ {}
-                :click $ fn (e d!) (d! :demo nil)
-            sphere $ {} (:radius 8)
-              :position $ [] 10 0 0
-              :material $ {} (:kind :mesh-lambert) (:opacity 0.6) (:color 0x9050c0)
-              :event $ {}
-                :click $ fn (e d!) (d! :canvas nil)
-            group ({})
-              text $ {} (:text |Quatrefoil) (:size 4) (:height 2)
-                :position $ [] -30 0 20
-                :material $ {} (:kind :mesh-lambert) (:color 0xffcccc)
-            sphere $ {} (:radius 4) (:emissive 0xffffff) (:metalness 0.8) (:color 0x00ff00) (:emissiveIntensity 1) (:roughness 0)
-              :position $ [] -10 20 0
-              :material $ {} (:kind :mesh-basic) (:color 0xffff55) (:opacity 0.8) (:transparent true)
-              :event $ {}
-                :click $ fn (e d!) (d! :canvas nil)
-            point-light $ {} (:color 0xffff55) (:intensity 2) (:distance 200)
-              :position $ [] -10 20 0
+        |&v- $ quote
+          defn &v- (a b)
+            let[] (x y z) a $ let[] (x2 y2 z2) b
+              [] (- x x2) (- y y2) (- z z2)
+        |comp-ruled-surface $ quote
+          defcomp comp-ruled-surface (states)
+            let
+                cursor $ :cursor states
+                state $ or (:data states)
+                  {}
+                    :s0 $ [] 0 0 0
+                    :s1 $ [] 10 0 0
+                    :e0 $ [] 0 10 1
+                    :e1 $ [] 10 10 1
+                step 40
+                v0 $ v-scale
+                  &v- (:e0 state) (:s0 state)
+                  / 1 step
+                v1 $ v-scale
+                  &v- (:e1 state) (:s1 state)
+                  / 1 step
+              group ({})
+                comp-position-point (:s0 state) 0.1 0xffaaaa $ fn (p d!)
+                  d! cursor $ assoc state :s0 p
+                comp-position-point (:s1 state) 0.1 0xffaaaa $ fn (p d!)
+                  d! cursor $ assoc state :s1 p
+                comp-position-point (:e0 state) 0.1 0xffaaaa $ fn (p d!)
+                  d! cursor $ assoc state :e0 p
+                comp-position-point (:e1 state) 0.1 0xffaaaa $ fn (p d!)
+                  d! cursor $ assoc state :e1 p
+                line $ {}
+                  :points $ [] (:s0 state) (:e0 state)
+                  :position $ [] 0 0 0
+                  :rotation $ [] 0 0 0
+                  :scale $ [] 1 1 1
+                  :material cover-line
+                line $ {}
+                  :points $ [] (:s1 state) (:e1 state)
+                  :position $ [] 0 0 0
+                  :rotation $ [] 0 0 0
+                  :scale $ [] 1 1 1
+                  :material cover-line
+                group ({}) & $ ->
+                  range $ inc step
+                  map $ fn (idx)
+                    tube $ {} (:points-fn tube-fn)
+                      :factor $ {}
+                        :from $ &v+ (:s0 state) (v-scale v0 idx)
+                        :to $ &v+ (:s1 state) (v-scale v1 idx)
+                      :radius 0.2
+                      :tubular-segments 8
+                      :radial-segments 8
+                      :position $ [] 0 0 0
+                      :material $ {} (:kind :mesh-standard) (:color 0x8888ff) (:opacity 1) (:transparent true)
+                point-light $ {} (:color 0xffffaa) (:intensity 1.4) (:distance 200)
+                  :position $ [] 20 40 50
+                ambient-light $ {} (:color 0xcccc88)
+        |tube-fn $ quote
+          defn tube-fn (u factor)
+            let
+                from $ :from factor
+                to $ :to factor
+              &v+ (v-scale from u)
+                v-scale to $ - 1 u
     |app.updater $ {}
       :ns $ quote
         ns app.updater $ :require
