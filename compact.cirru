@@ -1,15 +1,16 @@
 
 {} (:package |app)
   :configs $ {} (:init-fn |app.main/main!) (:reload-fn |app.main/reload!)
-    :modules $ [] |touch-control/ |pointed-prompt/ |quatrefoil.calcit/
+    :modules $ [] |touch-control/ |pointed-prompt/ |quatrefoil/
     :version |0.0.4
+  :entries $ {}
   :files $ {}
     |app.comp.container $ {}
       :ns $ quote
         ns app.comp.container $ :require
-          quatrefoil.alias :refer $ group box sphere point-light ambient-light perspective-camera scene text line tube
+          quatrefoil.alias :refer $ group box sphere point-light ambient-light perspective-camera scene text line tube mesh-line
           quatrefoil.core :refer $ defcomp >>
-          quatrefoil.comp.control :refer $ comp-position-point
+          quatrefoil.comp.control :refer $ comp-pin-point
           quatrefoil.app.materials :refer $ cover-line
           quatrefoil.math :refer $ v-scale v+ &v+
       :defs $ {}
@@ -55,48 +56,57 @@
                   &v- (:e1 state) (:s1 state)
                   / 1 step
               group ({})
-                comp-position-point (:s0 state) 0.1 0xffaaaa $ fn (p d!)
-                  d! cursor $ assoc state :s0 p
-                comp-position-point (:s1 state) 0.1 0xffaaaa $ fn (p d!)
-                  d! cursor $ assoc state :s1 p
-                comp-position-point (:e0 state) 0.1 0xffaaaa $ fn (p d!)
-                  d! cursor $ assoc state :e0 p
-                comp-position-point (:e1 state) 0.1 0xffaaaa $ fn (p d!)
-                  d! cursor $ assoc state :e1 p
+                comp-pin-point
+                  {}
+                    :position $ :s0 state
+                    :speed 0.1
+                    :color 0xffffaa
+                  fn (p d!)
+                    d! cursor $ assoc state :s0 p
+                comp-pin-point
+                  {}
+                    :position $ :s1 state
+                    :speed 0.1
+                    :color 0xffffaa
+                  fn (p d!)
+                    d! cursor $ assoc state :s1 p
+                comp-pin-point
+                  {}
+                    :position $ :e0 state
+                    :speed 0.1
+                    :color 0xffffaa
+                  fn (p d!)
+                    d! cursor $ assoc state :e0 p
+                comp-pin-point
+                  {}
+                    :position $ :e1 state
+                    :speed 0.1
+                    :color 0xffffaa
+                  fn (p d!)
+                    d! cursor $ assoc state :e1 p
                 line $ {}
                   :points $ [] (:s0 state) (:e0 state)
                   :position $ [] 0 0 0
-                  :rotation $ [] 0 0 0
-                  :scale $ [] 1 1 1
-                  :material cover-line
+                  :material $ assoc cover-line :opacity 0.5
                 line $ {}
                   :points $ [] (:s1 state) (:e1 state)
                   :position $ [] 0 0 0
-                  :rotation $ [] 0 0 0
-                  :scale $ [] 1 1 1
-                  :material cover-line
+                  :material $ assoc cover-line :opacity 0.5
                 group ({}) & $ ->
                   range $ inc step
                   map $ fn (idx)
-                    tube $ {} (:points-fn tube-fn)
-                      :factor $ {}
-                        :from $ &v+ (:s0 state) (v-scale v0 idx)
-                        :to $ &v+ (:s1 state) (v-scale v1 idx)
-                      :radius 0.2
-                      :tubular-segments 8
-                      :radial-segments 8
+                    mesh-line $ {}
+                      :points $ []
+                        &v+ (:s0 state) (v-scale v0 idx)
+                        &v+ (:s1 state) (v-scale v1 idx)
                       :position $ [] 0 0 0
-                      :material $ {} (:kind :mesh-standard) (:color 0x8888ff) (:opacity 1) (:transparent true)
-                point-light $ {} (:color 0xffffaa) (:intensity 1.4) (:distance 200)
-                  :position $ [] 20 40 50
-                ambient-light $ {} (:color 0xcccc88)
-        |tube-fn $ quote
-          defn tube-fn (u factor)
-            let
-                from $ :from factor
-                to $ :to factor
-              &v+ (v-scale from u)
-                v-scale to $ - 1 u
+                      :material $ {} (:kind :mesh-line) (:color 0xaaaaff) (:transparent true) (:opacity 0.8) (:lineWidth 0.5)
+                group
+                  {} $ :position ([] -10 0 20)
+                  point-light $ {} (:color 0xffff33) (:intensity 4) (:distance 100)
+                  sphere $ {} (:radius 2) (:width-segments 10) (:height-segments 10)
+                    :material $ {} (:kind :mesh-lambert) (:color 0xffff33) (:opacity 1)
+                ambient-light $ {} (:color 0xffff00) (:intensity 0.5)
     |app.updater $ {}
       :ns $ quote
         ns app.updater $ :require
