@@ -145,7 +145,7 @@
         |comp-fractal $ quote
           defn comp-fractal () $ line
             {}
-              :points $ fold-line 10 ([] 0 0 0 0) ([] 100 0 0 0) ([] 15 0 0 10) ([] 0 15 0 20) ([] 0 0 15 30)
+              :points $ fold-line 14 ([] 0 0 0 0) ([] 101 0 0 0) ([] 21 0 0 16) ([] 21 10 0 20) ([] 21 0 0 24)
                 q-inverse $ [] 0 0 0 40
               :position $ [] 5 -10 0
               :material $ {} (:kind :mesh-line) (:color 0xffffaa) (:transparent true) (:opacity 0.4) (:lineWidth 0.1)
@@ -166,7 +166,7 @@
                   fold-line (dec level) (&q+ base branch-c) (&q- v branch-c) a b c full'
         |minimal-seg $ quote
           def minimal-seg $ js/parseFloat
-            either (get-env "\"minimal-seg") "\"0.08"
+            either (get-env "\"minimal-seg") "\"0.1"
     |app.updater $ {}
       :ns $ quote
         ns app.updater $ :require
