@@ -9,10 +9,10 @@
       :ns $ quote
         ns app.comp.container $ :require
           quatrefoil.alias :refer $ group box sphere point-light ambient-light perspective-camera scene text line tube mesh-line
-          quatrefoil.core :refer $ defcomp >>
+          quatrefoil.core :refer $ defcomp >> hslx
           quatrefoil.comp.control :refer $ comp-pin-point
           quatrefoil.app.materials :refer $ cover-line
-          quatrefoil.math :refer $ v-scale v+ &v+
+          quatrefoil.math :refer $ v-scale v+ &v+ &q+ &q- &q* q-inverse q-length2
       :defs $ {}
         |comp-container $ quote
           defcomp comp-container (store)
@@ -20,16 +20,31 @@
                 states $ :states store
                 cursor $ :cursor states
                 state $ either (:data states)
-                  {} $ :tab :portal
-                tab $ :tab state
+                  {} $ :tab :ruled-surface
               scene ({})
                 perspective-camera $ {} (:fov 45)
                   :aspect $ / js/window.innerWidth js/window.innerHeight
                   :near 0.1
                   :far 1000
                   :position $ [] 0 0 100
-                comp-ruled-surface $ >> states :ruled
-                ambient-light $ {} (:color 0x666666)
+                comp-tabs (:tab state)
+                  fn (tab d!)
+                    d! cursor $ assoc state :tab tab
+                case-default (:tab state)
+                  text $ {}
+                    :text $ str "\"Unknown tab " (:tab state)
+                    :position $ [] 0 0 0
+                    :material $ {} (:kind :mesh-lambert) (:color 0xffff33) (:opacity 1)
+                    :size 2
+                    :height 0.5
+                  :ruled-surface $ comp-ruled-surface (>> states :ruled)
+                  :fractal $ comp-fractal
+                group
+                  {} $ :position ([] -10 0 20)
+                  point-light $ {} (:color 0xffff33) (:intensity 2) (:distance 100)
+                  sphere $ {} (:radius 0.6) (:width-segments 10) (:height-segments 10)
+                    :material $ {} (:kind :mesh-lambert) (:color 0xffff33) (:opacity 1)
+                ambient-light $ {} (:color 0xffff00) (:intensity 1)
                 ; point-light $ {} (:color 0xffffff) (:intensity 1.4) (:distance 200)
                   :position $ [] 20 40 50
                 ; point-light $ {} (:color 0xffffff) (:intensity 2) (:distance 200)
@@ -100,13 +115,58 @@
                         &v+ (:s0 state) (v-scale v0 idx)
                         &v+ (:s1 state) (v-scale v1 idx)
                       :position $ [] 0 0 0
-                      :material $ {} (:kind :mesh-line) (:color 0xaaaaff) (:transparent true) (:opacity 0.8) (:lineWidth 0.5)
+                      :material $ {} (:kind :mesh-line)
+                        :color $ hslx
+                          * 360 $ js/Math.random
+                          , 100 80
+                        :transparent true
+                        :opacity 0.9
+                        :lineWidth 0.4
+        |comp-tabs $ quote
+          defcomp comp-tabs (selected-tab on-change)
+            group ({}) & $ -> ([] :ruled-surface :fractal)
+              map-indexed $ fn (idx tab)
                 group
-                  {} $ :position ([] -10 0 20)
-                  point-light $ {} (:color 0xffff33) (:intensity 4) (:distance 100)
-                  sphere $ {} (:radius 2) (:width-segments 10) (:height-segments 10)
-                    :material $ {} (:kind :mesh-lambert) (:color 0xffff33) (:opacity 1)
-                ambient-light $ {} (:color 0xffff00) (:intensity 0.5)
+                  {} $ :position
+                    [] -40 (* 10 idx) 0
+                  box $ {} (:width 10) (:height 5) (:depth 1)
+                    :position $ [] 0 0 0
+                    :material $ {} (:kind :mesh-lambert)
+                      :color $ if (= tab selected-tab) 0x555533 0x333333
+                      :opacity 1
+                    :event $ {}
+                      :click $ fn (e d!) (on-change tab d!)
+                  text $ {}
+                    :text $ str tab
+                    :position $ [] 0 0 1
+                    :material $ {} (:kind :mesh-lambert) (:color 0xffffaa) (:opacity 1)
+                    :size 2
+                    :height 0.5
+        |comp-fractal $ quote
+          defn comp-fractal () $ line
+            {}
+              :points $ fold-line 10 ([] 0 0 0 0) ([] 100 0 0 0) ([] 15 0 0 10) ([] 0 15 0 20) ([] 0 0 15 30)
+                q-inverse $ [] 0 0 0 40
+              :position $ [] 5 -10 0
+              :material $ {} (:kind :mesh-line) (:color 0xffffaa) (:transparent true) (:opacity 0.4) (:lineWidth 0.1)
+        |fold-line $ quote
+          defn fold-line (level base v a b c full')
+            let
+                branch-a $ &q* (&q* v full') a
+                branch-b $ &q* (&q* v full') b
+                branch-c $ &q* (&q* v full') c
+              if
+                or (<= level 0)
+                  &< (q-length2 v) minimal-seg
+                [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base v)
+                concat
+                  fold-line (dec level) base branch-a a b c full'
+                  fold-line (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c full'
+                  fold-line (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c full'
+                  fold-line (dec level) (&q+ base branch-c) (&q- v branch-c) a b c full'
+        |minimal-seg $ quote
+          def minimal-seg $ js/parseFloat
+            either (get-env "\"minimal-seg") "\"0.08"
     |app.updater $ {}
       :ns $ quote
         ns app.updater $ :require
