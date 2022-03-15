@@ -42,7 +42,7 @@
                 group
                   {} $ :position ([] -10 0 20)
                   point-light $ {} (:color 0xffff33) (:intensity 2) (:distance 100)
-                  sphere $ {} (:radius 0.6) (:width-segments 10) (:height-segments 10)
+                  ; sphere $ {} (:radius 0.6) (:width-segments 10) (:height-segments 10)
                     :material $ {} (:kind :mesh-lambert) (:color 0xffff33) (:opacity 1)
                 ambient-light $ {} (:color 0xffff00) (:intensity 1)
                 ; point-light $ {} (:color 0xffffff) (:intensity 1.4) (:distance 200)
@@ -129,44 +129,50 @@
                 group
                   {} $ :position
                     [] -40 (* 10 idx) 0
-                  box $ {} (:width 10) (:height 5) (:depth 1)
+                  box $ {} (:width 8) (:height 4) (:depth 0.4)
                     :position $ [] 0 0 0
                     :material $ {} (:kind :mesh-lambert)
                       :color $ if (= tab selected-tab) 0x555533 0x333333
-                      :opacity 1
+                      :opacity 0.5
+                      :transparent true
                     :event $ {}
                       :click $ fn (e d!) (on-change tab d!)
                   text $ {}
                     :text $ str tab
-                    :position $ [] 0 0 1
-                    :material $ {} (:kind :mesh-lambert) (:color 0xffffaa) (:opacity 1)
-                    :size 2
-                    :height 0.5
+                    :position $ [] -4 0 1
+                    :material $ {} (:kind :mesh-lambert) (:color 0xffffaa) (:opacity 0.4) (:transparent true)
+                    :size 1.4
+                    :height 0.1
         |comp-fractal $ quote
           defn comp-fractal () $ line
             {}
-              :points $ fold-line 14 ([] 0 0 0 0) ([] 101 0 0 0) ([] 21 0 0 16) ([] 21 10 0 20) ([] 21 0 0 24)
-                q-inverse $ [] 0 0 0 40
+              :points $ prepend
+                fold-line 14 ([] 0 0 0 0) ([] 0 100 0 0) ([] 0 20 0 22) ([] 16 20 0 23) ([] 16 20 0 27) ([] 0 20 0 28)
+                  q-inverse $ [] 0 0 0 50
+                [] 0 0 0 0
               :position $ [] 5 -10 0
-              :material $ {} (:kind :mesh-line) (:color 0xffffaa) (:transparent true) (:opacity 0.4) (:lineWidth 0.1)
+              :material $ {} (:kind :line-basic) (:color 0xffaa77) (:transparent true) (:opacity 0.5) (:lineWidth 0.1)
         |fold-line $ quote
-          defn fold-line (level base v a b c full')
+          defn fold-line (level base v a b c d full')
             let
-                branch-a $ &q* (&q* v full') a
-                branch-b $ &q* (&q* v full') b
-                branch-c $ &q* (&q* v full') c
+                v' $ &q* v full'
+                branch-a $ &q* v' a
+                branch-b $ &q* v' b
+                branch-c $ &q* v' c
+                branch-d $ &q* v' d
               if
                 or (<= level 0)
                   &< (q-length2 v) minimal-seg
-                [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base v)
+                [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base branch-c) (&q+ base branch-d) (&q+ base v)
                 concat
-                  fold-line (dec level) base branch-a a b c full'
-                  fold-line (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c full'
-                  fold-line (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c full'
-                  fold-line (dec level) (&q+ base branch-c) (&q- v branch-c) a b c full'
+                  fold-line (dec level) base branch-a a b c d full'
+                  fold-line (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c d full'
+                  fold-line (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c d full'
+                  fold-line (dec level) (&q+ base branch-c) (&q- branch-d branch-c) a b c d full'
+                  fold-line (dec level) (&q+ base branch-d) (&q- v branch-d) a b c d full'
         |minimal-seg $ quote
           def minimal-seg $ js/parseFloat
-            either (get-env "\"minimal-seg") "\"0.1"
+            either (get-env "\"minimal-seg") "\"0.06"
     |app.updater $ {}
       :ns $ quote
         ns app.updater $ :require
