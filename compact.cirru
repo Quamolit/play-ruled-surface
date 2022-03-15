@@ -20,7 +20,7 @@
                 states $ :states store
                 cursor $ :cursor states
                 state $ either (:data states)
-                  {} $ :tab :ruled-surface
+                  {} $ :tab :fractal
               scene ({})
                 perspective-camera $ {} (:fov 45)
                   :aspect $ / js/window.innerWidth js/window.innerHeight
@@ -147,32 +147,34 @@
           defn comp-fractal () $ line
             {}
               :points $ prepend
-                fold-line 9 ([] 0 0 0 0) ([] 200 0 0 0) ([] 0 20 0 25) ([] 5 20 10 25) ([] 5 20 10 15) ([] 0 20 0 15)
-                  q-inverse $ [] 0 0 0 50
+                fold-line 10 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 13) ([] 0 0 29 40) ([] 0 0 0 30) ([] 29 0 0 20) ([] 0 0 0 47)
+                  q-inverse $ [] 0 0 0 60
                 [] 0 0 0 0
               :position $ [] 5 -10 0
-              :material $ {} (:kind :line-basic) (:color 0xffaa77) (:transparent true) (:opacity 0.5) (:lineWidth 0.1)
+              :material $ {} (:kind :line-basic) (:color 0xff8877) (:transparent true) (:opacity 0.4) (:lineWidth 0.1)
         |fold-line $ quote
-          defn fold-line (level base v a b c d full')
+          defn fold-line (level base v a b c d e full')
             let
                 v' $ &q* v full'
                 branch-a $ &q* v' a
                 branch-b $ &q* v' b
                 branch-c $ &q* v' c
                 branch-d $ &q* v' d
+                branch-e $ &q* v' e
               if
                 or (<= level 0)
                   &< (q-length2 v) minimal-seg
-                [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base branch-c) (&q+ base branch-d) (&q+ base v)
+                [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base branch-c) (&q+ base branch-d) (&q+ base branch-e) (&q+ base v)
                 concat
-                  fold-line (dec level) base branch-a a b c d full'
-                  fold-line (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c d full'
-                  fold-line (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c d full'
-                  fold-line (dec level) (&q+ base branch-c) (&q- branch-d branch-c) a b c d full'
-                  fold-line (dec level) (&q+ base branch-d) (&q- v branch-d) a b c d full'
+                  fold-line (dec level) base branch-a a b c d e full'
+                  fold-line (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c d e full'
+                  fold-line (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c d e full'
+                  fold-line (dec level) (&q+ base branch-c) (&q- branch-d branch-c) a b c d e full'
+                  fold-line (dec level) (&q+ base branch-d) (&q- branch-e branch-e) a b c d e full'
+                  fold-line (dec level) (&q+ base branch-e) (&q- v branch-e) a b c d e full'
         |minimal-seg $ quote
           def minimal-seg $ js/parseFloat
-            either (get-env "\"minimal-seg") "\"0.06"
+            either (get-env "\"minimal-seg") "\"0.1"
     |app.updater $ {}
       :ns $ quote
         ns app.updater $ :require
@@ -201,7 +203,7 @@
           defn main! () (load-console-formatter!) (inject-tree-methods)
             let
                 canvas-el $ js/document.querySelector |canvas
-              init-renderer! canvas-el $ {} (:background 0x110022)
+              init-renderer! canvas-el $ {} (:background 0x110011)
             render-app!
             add-watch *store :changes $ fn (store prev) (render-app!)
             set! js/window.onkeydown handle-key-event
