@@ -147,11 +147,11 @@
           defn comp-fractal () $ line
             {}
               :points $ prepend
-                fold-line 10 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 13) ([] 0 0 29 40) ([] 0 0 0 30) ([] 29 0 0 20) ([] 0 0 0 47)
+                fold-line 8 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 40) ([] 0 12.5 0 20) ([] 0 12.5 12.5 30) ([] 0 12.5 0 40) ([] 0 0 0 20)
                   q-inverse $ [] 0 0 0 60
                 [] 0 0 0 0
               :position $ [] 5 -10 0
-              :material $ {} (:kind :line-basic) (:color 0xff8877) (:transparent true) (:opacity 0.4) (:lineWidth 0.1)
+              :material $ {} (:kind :line-basic) (:color 0xccccff) (:transparent true) (:opacity 0.4) (:lineWidth 0.1)
         |fold-line $ quote
           defn fold-line (level base v a b c d e full')
             let
