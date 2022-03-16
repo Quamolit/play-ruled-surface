@@ -147,34 +147,32 @@
           defn comp-fractal () $ line
             {}
               :points $ prepend
-                fold-line 8 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 40) ([] 0 12.5 0 20) ([] 0 12.5 12.5 30) ([] 0 12.5 0 40) ([] 0 0 0 20)
-                  q-inverse $ [] 0 0 0 60
+                fold-line 9 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 27) ([] 0 -18 0 23) ([] 0 0 -18 27) ([] 0 0 0 23)
+                  q-inverse $ [] 0 0 0 50
                 [] 0 0 0 0
               :position $ [] 5 -10 0
-              :material $ {} (:kind :line-basic) (:color 0xccccff) (:transparent true) (:opacity 0.4) (:lineWidth 0.1)
+              :material $ {} (:kind :line-basic) (:color 0xc8ccff) (:transparent true) (:opacity 0.4) (:lineWidth 0.1)
         |fold-line $ quote
-          defn fold-line (level base v a b c d e full')
+          defn fold-line (level base v a b c d full')
             let
                 v' $ &q* v full'
                 branch-a $ &q* v' a
                 branch-b $ &q* v' b
                 branch-c $ &q* v' c
                 branch-d $ &q* v' d
-                branch-e $ &q* v' e
               if
                 or (<= level 0)
                   &< (q-length2 v) minimal-seg
-                [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base branch-c) (&q+ base branch-d) (&q+ base branch-e) (&q+ base v)
+                [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base branch-c) (&q+ base branch-d) (&q+ base v)
                 concat
-                  fold-line (dec level) base branch-a a b c d e full'
-                  fold-line (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c d e full'
-                  fold-line (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c d e full'
-                  fold-line (dec level) (&q+ base branch-c) (&q- branch-d branch-c) a b c d e full'
-                  fold-line (dec level) (&q+ base branch-d) (&q- branch-e branch-e) a b c d e full'
-                  fold-line (dec level) (&q+ base branch-e) (&q- v branch-e) a b c d e full'
+                  fold-line (dec level) base branch-a a b c d full'
+                  fold-line (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c d full'
+                  fold-line (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c d full'
+                  fold-line (dec level) (&q+ base branch-c) (&q- branch-d branch-c) a b c d full'
+                  fold-line (dec level) (&q+ base branch-d) (&q- v branch-d) a b c d full'
         |minimal-seg $ quote
           def minimal-seg $ js/parseFloat
-            either (get-env "\"minimal-seg") "\"0.1"
+            either (get-env "\"minimal-seg") "\"0.16"
     |app.updater $ {}
       :ns $ quote
         ns app.updater $ :require
@@ -203,7 +201,7 @@
           defn main! () (load-console-formatter!) (inject-tree-methods)
             let
                 canvas-el $ js/document.querySelector |canvas
-              init-renderer! canvas-el $ {} (:background 0x110011)
+              init-renderer! canvas-el $ {} (:background 0x110022)
             render-app!
             add-watch *store :changes $ fn (store prev) (render-app!)
             set! js/window.onkeydown handle-key-event
