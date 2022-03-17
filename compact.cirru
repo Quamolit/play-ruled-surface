@@ -157,18 +157,24 @@
               do (js/console.log "\"unknown" tab) ([])
               :ice $ fold-line4 9 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 27) ([] 0 -18 0 23) ([] 0 0 -18 27) ([] 0 0 0 23)
                 q-inverse $ [] 0 0 0 50
+                , 0.16
               :cable-stayed $ fold-line5 8 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 40) ([] 0 12.5 0 20) ([] 0 12.5 12.5 30) ([] 0 12.5 0 40) ([] 0 0 0 20)
                 q-inverse $ [] 0 0 0 60
+                , 0.16
               :fly-city $ fold-line4 9 ([] 0 0 0 0) ([] 200 0 0 0) ([] 0 20 0 25) ([] 5 20 10 25) ([] 5 20 10 15) ([] 0 20 0 15)
                 q-inverse $ [] 0 0 0 50
+                , 0.16
               :lamp-tree $ fold-line4 14 ([] 0 0 0 0) ([] 0 100 0 0) ([] 0 20 0 22) ([] 16 20 0 23) ([] 16 20 0 27) ([] 0 20 0 28)
                 q-inverse $ [] 0 0 0 50
+                , 0.16
               :wormhole $ fold-line3 14 ([] 0 0 0 0) ([] 101 0 0 0) ([] 21 0 0 16) ([] 21 10 0 20) ([] 21 0 0 24)
                 q-inverse $ [] 0 0 0 40
-              :water-caltrop $ fold-line5 7 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 13) ([] 0 0 29 40) ([] 0 0 0 30) ([] 29 0 0 20) ([] 0 0 0 47)
+                , 0.16
+              :water-caltrop $ fold-line5-caltrop 10 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 13) ([] 0 0 29 40) ([] 0 0 0 30) ([] 29 0 0 20) ([] 0 0 0 47)
                 q-inverse $ [] 0 0 0 60
+                , 0.16
         |fold-line3 $ quote
-          defn fold-line3 (level base v a b c full')
+          defn fold-line3 (level base v a b c full' minimal-seg)
             let
                 v' $ &q* v full'
                 branch-a $ &q* v' a
@@ -179,12 +185,12 @@
                   &< (q-length2 v) minimal-seg
                 [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base branch-c) (&q+ base v)
                 concat
-                  fold-line3 (dec level) base branch-a a b c full'
-                  fold-line3 (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c full'
-                  fold-line3 (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c full'
-                  fold-line3 (dec level) (&q+ base branch-c) (&q- v branch-c) a b c full'
+                  fold-line3 (dec level) base branch-a a b c full' minimal-seg
+                  fold-line3 (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c full' minimal-seg
+                  fold-line3 (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c full' minimal-seg
+                  fold-line3 (dec level) (&q+ base branch-c) (&q- v branch-c) a b c full' minimal-seg
         |fold-line4 $ quote
-          defn fold-line4 (level base v a b c d full')
+          defn fold-line4 (level base v a b c d full' minimal-seg)
             let
                 v' $ &q* v full'
                 branch-a $ &q* v' a
@@ -196,13 +202,13 @@
                   &< (q-length2 v) minimal-seg
                 [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base branch-c) (&q+ base branch-d) (&q+ base v)
                 concat
-                  fold-line4 (dec level) base branch-a a b c d full'
-                  fold-line4 (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c d full'
-                  fold-line4 (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c d full'
-                  fold-line4 (dec level) (&q+ base branch-c) (&q- branch-d branch-c) a b c d full'
-                  fold-line4 (dec level) (&q+ base branch-d) (&q- v branch-d) a b c d full'
+                  fold-line4 (dec level) base branch-a a b c d full' minimal-seg
+                  fold-line4 (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c d full' minimal-seg
+                  fold-line4 (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c d full' minimal-seg
+                  fold-line4 (dec level) (&q+ base branch-c) (&q- branch-d branch-c) a b c d full' minimal-seg
+                  fold-line4 (dec level) (&q+ base branch-d) (&q- v branch-d) a b c d full' minimal-seg
         |fold-line5 $ quote
-          defn fold-line5 (level base v a b c d e full')
+          defn fold-line5 (level base v a b c d e full' minimal-seg)
             let
                 v' $ &q* v full'
                 branch-a $ &q* v' a
@@ -215,12 +221,12 @@
                   &< (q-length2 v) minimal-seg
                 [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base branch-c) (&q+ base branch-d) (&q+ base branch-e) (&q+ base v)
                 concat
-                  fold-line5 (dec level) base branch-a a b c d e full'
-                  fold-line5 (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c d e full'
-                  fold-line5 (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c d e full'
-                  fold-line5 (dec level) (&q+ base branch-c) (&q- branch-d branch-c) a b c d e full'
-                  fold-line5 (dec level) (&q+ base branch-d) (&q- branch-e branch-d) a b c d e full'
-                  fold-line5 (dec level) (&q+ base branch-e) (&q- v branch-e) a b c d e full'
+                  fold-line5 (dec level) base branch-a a b c d e full' minimal-seg
+                  fold-line5 (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c d e full' minimal-seg
+                  fold-line5 (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c d e full' minimal-seg
+                  fold-line5 (dec level) (&q+ base branch-c) (&q- branch-d branch-c) a b c d e full' minimal-seg
+                  fold-line5 (dec level) (&q+ base branch-d) (&q- branch-e branch-d) a b c d e full' minimal-seg
+                  fold-line5 (dec level) (&q+ base branch-e) (&q- v branch-e) a b c d e full' minimal-seg
         |comp-fractal $ quote
           defn comp-fractal (states)
             let
@@ -238,10 +244,29 @@
                 line $ {}
                   :points $ build-fractal-path (:tab state)
                   :position $ [] 5 -10 0
-                  :material $ {} (:kind :line-basic) (:color 0xffaa99) (:transparent true) (:opacity 0.4) (:linewidth 0.1)
-        |minimal-seg $ quote
-          def minimal-seg $ js/parseFloat
-            either (get-env "\"minimal-seg") "\"0.16"
+                  :material $ {} (:kind :line-basic) (:color 0xffa6a0) (:transparent true) (:opacity 0.4) (:linewidth 0.1)
+        |fold-line5-caltrop $ quote
+          defn fold-line5-caltrop (level base v a b c d e full' minimal-seg)
+            let
+                v' $ &q* v full'
+                branch-a $ &q* v' a
+                branch-b $ &q* v' b
+                branch-c $ &q* v' c
+                branch-d $ &q* v' d
+                branch-e $ &q* v' e
+              if
+                or (<= level 0)
+                  &< (q-length2 v) minimal-seg
+                [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base branch-c) (&q+ base branch-d) (&q+ base branch-e) (&q+ base v)
+                concat
+                  fold-line5-caltrop (dec level) base branch-a a b c d e full' minimal-seg
+                  fold-line5-caltrop (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c d e full' minimal-seg
+                  fold-line5-caltrop (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c d e full' minimal-seg
+                  fold-line5-caltrop (dec level) (&q+ base branch-c) (&q- branch-d branch-c) a b c d e full' minimal-seg
+                  fold-line5-caltrop (dec level) (&q+ base branch-d)
+                    &q- branch-e $ noted "\"has typo here but got really interesting result" branch-e
+                    , a b c d e full' minimal-seg
+                  fold-line5-caltrop (dec level) (&q+ base branch-e) (&q- v branch-e) a b c d e full' minimal-seg
     |app.updater $ {}
       :ns $ quote
         ns app.updater $ :require
