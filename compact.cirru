@@ -177,6 +177,9 @@
               :fold-snow $ fold-line5 10 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 20) ([] 0 0 20 40) ([] 0 0 0 30) ([] 0 20 0 20) ([] 0 0 0 40)
                 q-inverse $ [] 0 0 0 60
                 , 0.06
+              :ingot $ fold-line4 10 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 10 10) ([] 0 5 0 20) ([] 0 5 0 10) ([] 0 0 10 20)
+                q-inverse $ [] 0 0 0 30
+                , 0.16
         |fold-line3 $ quote
           defn fold-line3 (level base v a b c full' minimal-seg)
             let
@@ -241,12 +244,14 @@
                 comp-tabs
                   {}
                     :selected $ :shape state
-                    :tabs $ [] :ice :fly-city :cable-stayed :water-caltrop :lamp-tree :wormhole :fold-snow 
+                    :tabs $ [] :ice :fly-city :cable-stayed :water-caltrop :lamp-tree :wormhole :fold-snow :ingot 
                     :position $ [] -55 20 0
                   fn (tab d!)
                     d! cursor $ assoc state :shape tab
                 line $ {}
-                  :points $ build-fractal-path (:shape state)
+                  :points $ prepend
+                    build-fractal-path $ :shape state
+                    [] 0 0 0 0
                   :position $ [] 5 -10 0
                   :material $ {} (:kind :line-basic) (:color 0xffa6a0) (:transparent true) (:opacity 0.6) (:linewidth 0.1)
         |fold-line5-caltrop $ quote
