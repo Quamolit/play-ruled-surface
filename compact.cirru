@@ -27,7 +27,11 @@
                   :near 0.1
                   :far 1000
                   :position $ [] 0 0 100
-                comp-tabs (:tab state)
+                comp-tabs
+                  {}
+                    :tabs $ [] :ruled-surface :fractal
+                    :selected $ :tab state
+                    :position $ [] -40 0 0
                   fn (tab d!)
                     d! cursor $ assoc state :tab tab
                 case-default (:tab state)
@@ -38,7 +42,7 @@
                     :size 2
                     :height 0.5
                   :ruled-surface $ comp-ruled-surface (>> states :ruled)
-                  :fractal $ comp-fractal
+                  :fractal $ comp-fractal (>> states :fractal)
                 group
                   {} $ :position ([] -10 0 20)
                   point-light $ {} (:color 0xffff33) (:intensity 2) (:distance 100)
@@ -53,6 +57,31 @@
           defn &v- (a b)
             let[] (x y z) a $ let[] (x2 y2 z2) b
               [] (- x x2) (- y y2) (- z z2)
+        |comp-tabs $ quote
+          defcomp comp-tabs (options on-change)
+            let
+                selected-tab $ :selected options
+                tabs $ :tabs options
+                position $ :position options
+              group ({}) & $ -> tabs
+                map-indexed $ fn (idx tab)
+                  group
+                    {} $ :position
+                      &v- position $ [] 0 (* 6 idx) 0
+                    box $ {} (:width 8) (:height 4) (:depth 0.4)
+                      :position $ [] 0 0 0
+                      :material $ {} (:kind :mesh-lambert)
+                        :color $ if (= tab selected-tab) 0x555533 0x333333
+                        :opacity 0.5
+                        :transparent true
+                      :event $ {}
+                        :click $ fn (e d!) (on-change tab d!)
+                    text $ {}
+                      :text $ str tab
+                      :position $ [] -4 0 1
+                      :material $ {} (:kind :mesh-lambert) (:color 0xffffaa) (:opacity 0.4) (:transparent true)
+                      :size 1.4
+                      :height 0.1
         |comp-ruled-surface $ quote
           defcomp comp-ruled-surface (states)
             let
@@ -122,38 +151,40 @@
                         :transparent true
                         :opacity 0.9
                         :lineWidth 0.4
-        |comp-tabs $ quote
-          defcomp comp-tabs (selected-tab on-change)
-            group ({}) & $ -> ([] :ruled-surface :fractal)
-              map-indexed $ fn (idx tab)
-                group
-                  {} $ :position
-                    [] -40 (* 10 idx) 0
-                  box $ {} (:width 8) (:height 4) (:depth 0.4)
-                    :position $ [] 0 0 0
-                    :material $ {} (:kind :mesh-lambert)
-                      :color $ if (= tab selected-tab) 0x555533 0x333333
-                      :opacity 0.5
-                      :transparent true
-                    :event $ {}
-                      :click $ fn (e d!) (on-change tab d!)
-                  text $ {}
-                    :text $ str tab
-                    :position $ [] -4 0 1
-                    :material $ {} (:kind :mesh-lambert) (:color 0xffffaa) (:opacity 0.4) (:transparent true)
-                    :size 1.4
-                    :height 0.1
-        |comp-fractal $ quote
-          defn comp-fractal () $ line
-            {}
-              :points $ prepend
-                fold-line 9 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 27) ([] 0 -18 0 23) ([] 0 0 -18 27) ([] 0 0 0 23)
-                  q-inverse $ [] 0 0 0 50
-                [] 0 0 0 0
-              :position $ [] 5 -10 0
-              :material $ {} (:kind :line-basic) (:color 0xc8ccff) (:transparent true) (:opacity 0.4) (:lineWidth 0.1)
-        |fold-line $ quote
-          defn fold-line (level base v a b c d full')
+        |build-fractal-path $ quote
+          defn build-fractal-path (tab)
+            case-default tab
+              do (js/console.log "\"unknown" tab) ([])
+              :ice $ fold-line4 9 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 27) ([] 0 -18 0 23) ([] 0 0 -18 27) ([] 0 0 0 23)
+                q-inverse $ [] 0 0 0 50
+              :cable-stayed $ fold-line5 8 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 40) ([] 0 12.5 0 20) ([] 0 12.5 12.5 30) ([] 0 12.5 0 40) ([] 0 0 0 20)
+                q-inverse $ [] 0 0 0 60
+              :fly-city $ fold-line4 9 ([] 0 0 0 0) ([] 200 0 0 0) ([] 0 20 0 25) ([] 5 20 10 25) ([] 5 20 10 15) ([] 0 20 0 15)
+                q-inverse $ [] 0 0 0 50
+              :lamp-tree $ fold-line4 14 ([] 0 0 0 0) ([] 0 100 0 0) ([] 0 20 0 22) ([] 16 20 0 23) ([] 16 20 0 27) ([] 0 20 0 28)
+                q-inverse $ [] 0 0 0 50
+              :wormhole $ fold-line3 14 ([] 0 0 0 0) ([] 101 0 0 0) ([] 21 0 0 16) ([] 21 10 0 20) ([] 21 0 0 24)
+                q-inverse $ [] 0 0 0 40
+              :water-caltrop $ fold-line5 7 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 13) ([] 0 0 29 40) ([] 0 0 0 30) ([] 29 0 0 20) ([] 0 0 0 47)
+                q-inverse $ [] 0 0 0 60
+        |fold-line3 $ quote
+          defn fold-line3 (level base v a b c full')
+            let
+                v' $ &q* v full'
+                branch-a $ &q* v' a
+                branch-b $ &q* v' b
+                branch-c $ &q* v' c
+              if
+                or (<= level 0)
+                  &< (q-length2 v) minimal-seg
+                [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base branch-c) (&q+ base v)
+                concat
+                  fold-line3 (dec level) base branch-a a b c full'
+                  fold-line3 (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c full'
+                  fold-line3 (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c full'
+                  fold-line3 (dec level) (&q+ base branch-c) (&q- v branch-c) a b c full'
+        |fold-line4 $ quote
+          defn fold-line4 (level base v a b c d full')
             let
                 v' $ &q* v full'
                 branch-a $ &q* v' a
@@ -165,11 +196,49 @@
                   &< (q-length2 v) minimal-seg
                 [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base branch-c) (&q+ base branch-d) (&q+ base v)
                 concat
-                  fold-line (dec level) base branch-a a b c d full'
-                  fold-line (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c d full'
-                  fold-line (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c d full'
-                  fold-line (dec level) (&q+ base branch-c) (&q- branch-d branch-c) a b c d full'
-                  fold-line (dec level) (&q+ base branch-d) (&q- v branch-d) a b c d full'
+                  fold-line4 (dec level) base branch-a a b c d full'
+                  fold-line4 (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c d full'
+                  fold-line4 (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c d full'
+                  fold-line4 (dec level) (&q+ base branch-c) (&q- branch-d branch-c) a b c d full'
+                  fold-line4 (dec level) (&q+ base branch-d) (&q- v branch-d) a b c d full'
+        |fold-line5 $ quote
+          defn fold-line5 (level base v a b c d e full')
+            let
+                v' $ &q* v full'
+                branch-a $ &q* v' a
+                branch-b $ &q* v' b
+                branch-c $ &q* v' c
+                branch-d $ &q* v' d
+                branch-e $ &q* v' e
+              if
+                or (<= level 0)
+                  &< (q-length2 v) minimal-seg
+                [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base branch-c) (&q+ base branch-d) (&q+ base branch-e) (&q+ base v)
+                concat
+                  fold-line5 (dec level) base branch-a a b c d e full'
+                  fold-line5 (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b c d e full'
+                  fold-line5 (dec level) (&q+ base branch-b) (&q- branch-c branch-b) a b c d e full'
+                  fold-line5 (dec level) (&q+ base branch-c) (&q- branch-d branch-c) a b c d e full'
+                  fold-line5 (dec level) (&q+ base branch-d) (&q- branch-e branch-d) a b c d e full'
+                  fold-line5 (dec level) (&q+ base branch-e) (&q- v branch-e) a b c d e full'
+        |comp-fractal $ quote
+          defn comp-fractal (states)
+            let
+                cursor $ :cursor states
+                state $ or (:data states)
+                  {} $ :shape :zero
+              group ({})
+                comp-tabs
+                  {}
+                    :selected $ :shape state
+                    :tabs $ [] :ice :fly-city :cable-stayed :water-caltrop :lamp-tree :wormhole 
+                    :position $ [] -55 20 0
+                  fn (tab d!)
+                    d! cursor $ assoc state :tab tab
+                line $ {}
+                  :points $ build-fractal-path (:tab state)
+                  :position $ [] 5 -10 0
+                  :material $ {} (:kind :line-basic) (:color 0xffaa99) (:transparent true) (:opacity 0.4) (:linewidth 0.1)
         |minimal-seg $ quote
           def minimal-seg $ js/parseFloat
             either (get-env "\"minimal-seg") "\"0.16"
