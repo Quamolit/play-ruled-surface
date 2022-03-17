@@ -154,7 +154,8 @@
         |build-fractal-path $ quote
           defn build-fractal-path (tab)
             case-default tab
-              do (js/console.log "\"unknown" tab) ([])
+              do (js/console.log "\"unknown" tab)
+                [] ([] 0 0 0 0) ([] 0 40 0 0) ([] 40 0 0 0) ([] 0 0 0 0)
               :ice $ fold-line4 9 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 27) ([] 0 -18 0 23) ([] 0 0 -18 27) ([] 0 0 0 23)
                 q-inverse $ [] 0 0 0 50
                 , 0.16
@@ -173,6 +174,9 @@
               :water-caltrop $ fold-line5-caltrop 10 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 13) ([] 0 0 29 40) ([] 0 0 0 30) ([] 29 0 0 20) ([] 0 0 0 47)
                 q-inverse $ [] 0 0 0 60
                 , 0.16
+              :fold-snow $ fold-line5 10 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 20) ([] 0 0 20 40) ([] 0 0 0 30) ([] 0 20 0 20) ([] 0 0 0 40)
+                q-inverse $ [] 0 0 0 60
+                , 0.06
         |fold-line3 $ quote
           defn fold-line3 (level base v a b c full' minimal-seg)
             let
@@ -237,14 +241,14 @@
                 comp-tabs
                   {}
                     :selected $ :shape state
-                    :tabs $ [] :ice :fly-city :cable-stayed :water-caltrop :lamp-tree :wormhole 
+                    :tabs $ [] :ice :fly-city :cable-stayed :water-caltrop :lamp-tree :wormhole :fold-snow 
                     :position $ [] -55 20 0
                   fn (tab d!)
-                    d! cursor $ assoc state :tab tab
+                    d! cursor $ assoc state :shape tab
                 line $ {}
-                  :points $ build-fractal-path (:tab state)
+                  :points $ build-fractal-path (:shape state)
                   :position $ [] 5 -10 0
-                  :material $ {} (:kind :line-basic) (:color 0xffa6a0) (:transparent true) (:opacity 0.4) (:linewidth 0.1)
+                  :material $ {} (:kind :line-basic) (:color 0xffa6a0) (:transparent true) (:opacity 0.6) (:linewidth 0.1)
         |fold-line5-caltrop $ quote
           defn fold-line5-caltrop (level base v a b c d e full' minimal-seg)
             let
