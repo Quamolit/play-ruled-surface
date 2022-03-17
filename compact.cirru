@@ -20,7 +20,7 @@
                 states $ :states store
                 cursor $ :cursor states
                 state $ either (:data states)
-                  {} $ :tab :ruled-surface
+                  {} $ :tab :fractal
               scene ({})
                 perspective-camera $ {} (:fov 45)
                   :aspect $ / js/window.innerWidth js/window.innerHeight
@@ -147,11 +147,11 @@
           defn comp-fractal () $ line
             {}
               :points $ prepend
-                fold-line 9 ([] 0 0 0 0) ([] 200 0 0 0) ([] 0 20 0 25) ([] 5 20 10 25) ([] 5 20 10 15) ([] 0 20 0 15)
+                fold-line 9 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 0 27) ([] 0 -18 0 23) ([] 0 0 -18 27) ([] 0 0 0 23)
                   q-inverse $ [] 0 0 0 50
                 [] 0 0 0 0
               :position $ [] 5 -10 0
-              :material $ {} (:kind :line-basic) (:color 0xffaa77) (:transparent true) (:opacity 0.5) (:lineWidth 0.1)
+              :material $ {} (:kind :line-basic) (:color 0xc8ccff) (:transparent true) (:opacity 0.4) (:lineWidth 0.1)
         |fold-line $ quote
           defn fold-line (level base v a b c d full')
             let
@@ -172,7 +172,7 @@
                   fold-line (dec level) (&q+ base branch-d) (&q- v branch-d) a b c d full'
         |minimal-seg $ quote
           def minimal-seg $ js/parseFloat
-            either (get-env "\"minimal-seg") "\"0.06"
+            either (get-env "\"minimal-seg") "\"0.16"
     |app.updater $ {}
       :ns $ quote
         ns app.updater $ :require
