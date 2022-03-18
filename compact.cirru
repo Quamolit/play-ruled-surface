@@ -14,6 +14,7 @@
           quatrefoil.app.materials :refer $ cover-line
           quatrefoil.math :refer $ v-scale v+ &v+ &v- &q+ &q- &q* q-inverse q-length2
           app.comp.fractal-line :refer $ comp-fractal-line
+          app.comp.fractal-tree :refer $ comp-fractal-tree
           app.comp.tabs :refer $ comp-tabs
       :defs $ {}
         |comp-container $ quote
@@ -22,14 +23,14 @@
                 states $ :states store
                 cursor $ :cursor states
                 state $ either (:data states)
-                  {} $ :tab :fractal
+                  {} $ :tab :fractal-line
               scene ({})
                 perspective-camera $ {} (:fov 45) (:near 0.1) (:far 1000)
                   :position $ [] 0 0 100
                   :aspect $ / js/window.innerWidth js/window.innerHeight
                 comp-tabs
                   {}
-                    :tabs $ [] :ruled-surface :fractal
+                    :tabs $ [] :ruled-surface :fractal-line :fractal-tree
                     :selected $ :tab state
                     :position $ [] -40 0 0
                   fn (tab d!)
@@ -40,7 +41,8 @@
                     :position $ [] 0 0 0
                     :material $ {} (:kind :mesh-lambert) (:color 0xffff33) (:opacity 1)
                   :ruled-surface $ comp-ruled-surface (>> states :ruled)
-                  :fractal $ comp-fractal-line (>> states :fractal)
+                  :fractal-line $ comp-fractal-line (>> states :fractal-line)
+                  :fractal-tree $ comp-fractal-tree (>> states :fractal-tree)
                 group
                   {} $ :position ([] -10 0 20)
                   point-light $ {} (:color 0xffff33) (:intensity 2) (:distance 100)
@@ -186,7 +188,7 @@
                 comp-tabs
                   {}
                     :selected $ :shape state
-                    :tabs $ [] :ice :fly-city :cable-stayed :water-caltrop :lamp-tree :wormhole :fold-snow :ingot :chain 
+                    :tabs $ [] :ice :fly-city :cable-stayed :water-caltrop :lamp-tree :wormhole :fold-snow :ingot :chain :brozing :try 
                     :position $ [] -55 20 0
                   fn (tab d!)
                     d! cursor $ assoc state :shape tab
@@ -228,6 +230,9 @@
               :chain $ fold-line2 16 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 3.75 7.5 15) ([] 0 -3.75 7.5 15)
                 q-inverse $ [] 0 0 0 30
                 , 0.0008
+              :brozing $ fold-line4 10 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 15 0) ([] 0 0 0 10) ([] 0 0 0 30) ([] 0 0 -15 40)
+                q-inverse $ [] 0 0 0 40
+                , 0.08
         |fold-line2 $ quote
           defn fold-line2 (level base v a b full' minimal-seg)
             let
@@ -352,3 +357,16 @@
                       :material $ {} (:kind :mesh-lambert) (:color 0xffffaa) (:opacity 0.4) (:transparent true)
                       :size 1.4
                       :height 0.1
+    |app.comp.fractal-tree $ {}
+      :ns $ quote
+        ns app.comp.fractal-tree $ :require
+          quatrefoil.alias :refer $ group box sphere point-light ambient-light perspective-camera scene text line tube mesh-line
+          quatrefoil.core :refer $ defcomp >> hslx
+          quatrefoil.comp.control :refer $ comp-pin-point
+          quatrefoil.app.materials :refer $ cover-line
+          quatrefoil.math :refer $ v-scale v+ &v+ &q+ &q- &q* q-inverse q-length2
+          app.comp.tabs :refer $ comp-tabs
+      :defs $ {}
+        |comp-fractal-tree $ quote
+          defn comp-fractal-tree (states)
+            group $ {}
