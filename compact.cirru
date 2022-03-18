@@ -360,7 +360,7 @@
     |app.comp.fractal-tree $ {}
       :ns $ quote
         ns app.comp.fractal-tree $ :require
-          quatrefoil.alias :refer $ group box sphere point-light ambient-light perspective-camera scene text line tube mesh-line
+          quatrefoil.alias :refer $ group box sphere point-light ambient-light perspective-camera scene text line line-segments tube mesh-line
           quatrefoil.core :refer $ defcomp >> hslx
           quatrefoil.comp.control :refer $ comp-pin-point
           quatrefoil.app.materials :refer $ cover-line
@@ -369,21 +369,73 @@
       :defs $ {}
         |comp-fractal-tree $ quote
           defn comp-fractal-tree (states)
-            group ({}) & $ -> (build-fractal-tree)
-              map $ fn (path)
-                line $ {} (:points path)
+            let
+                cursor $ :cursor states
+                state $ or (:data states)
+                  {} $ :shape :tree
+              group ({})
+                comp-tabs
+                  {}
+                    :selected $ :shape state
+                    :tabs $ [] :tree :cubes :umbrella3 :umbrella4 :crystal :try
+                    :position $ [] -55 20 0
+                  fn (tab d!)
+                    d! cursor $ assoc state :shape tab
+                line-segments $ {}
+                  :segments $ build-fractal-tree (:shape state)
                   :position $ [] 0 0 0
-                  :material $ {} (:kind :mesh-line) (:color 0xffa6a0) (:transparent false) (:opacity 1) (:linewidth 0.3)
+                  :material $ {} (:kind :line-basic) (:color 0xffb6b0) (:transparent true) (:opacity 0.4) (:linewidth 0.3)
         |build-fractal-tree $ quote
-          defn build-fractal-tree () $ let
-              inv $ q-inverse ([] 0 0 0 12)
-            concat
-              [] $ [] ([] 0 0 0) ([] 0 50 0 0)
-              expand-branch3 7 ([] 0 0 0 0) ([] 0 50 0 0)
-                &q* ([] 4 0 0 -6) inv
-                &q* ([] -2.8 0 -4 -6) inv
-                &q* ([] -2.8 0 4 -6) inv
-                , 0.16
+          defn build-fractal-tree (shape)
+            case-default shape
+              [] $ [] ([] 0 0 0) ([] 10 0 0)
+              :cubes $ let
+                  inv $ q-inverse ([] 0 0 0 7.5)
+                expand-branch4 12 ([] 0 0 0 0) ([] 0 50 0 0)
+                  &q* ([] 4 0 0 0) inv
+                  &q* ([] 0 0 -4 0) inv
+                  &q* ([] -4 0 0 0) inv
+                  &q* ([] 0 0 4 0) inv
+                  , 0.02
+              :tree $ let
+                  inv $ q-inverse ([] 0 0 0 10)
+                expand-branch4 8 ([] 0 0 0 0) ([] 0 50 0 0)
+                  &q* ([] 4 0 0 5) inv
+                  &q* ([] 0 0 -4 5) inv
+                  &q* ([] 0 0 4 5) inv
+                  &q* ([] -4 0 0 5) inv
+                  , 0.04
+              :umbrella3 $ let
+                  inv $ q-inverse ([] 0 0 0 15)
+                expand-branch3 14 ([] 0 0 0 0) ([] 0 50 0 0)
+                  &q* ([] 4 0 0 -7.5) inv
+                  &q* ([] -2.8284 0 -4 -7.5) inv
+                  &q* ([] -2.8284 0 4 -7.5) inv
+                  , 0.01
+              :umbrella4 $ let
+                  inv $ q-inverse ([] 0 0 0 16)
+                expand-branch4 10 ([] 0 0 0 0) ([] 0 50 0 0)
+                  &q* ([] 4 0 0 -8) inv
+                  &q* ([] 0 0 -4 -8) inv
+                  &q* ([] -4 0 0 -8) inv
+                  &q* ([] 0 0 4 -8) inv
+                  , 0.01
+              :crystal $ let
+                  inv $ q-inverse ([] 0 0 0 16)
+                expand-branch4 9 ([] 0 0 0 0) ([] 0 50 0 0)
+                  &q* ([] 8 0 0 -8) inv
+                  &q* ([] 0 0 -8 -8) inv
+                  &q* ([] -8 0 0 -8) inv
+                  &q* ([] 0 0 8 -8) inv
+                  , 0.01
+              :try $ let
+                  inv $ q-inverse ([] 0 0 0 24)
+                expand-branch4 9 ([] 0 0 0 0) ([] 0 50 0 0)
+                  &q* ([] 8 0 0 -8) inv
+                  &q* ([] 0 0 -8 -8) inv
+                  &q* ([] -8 0 0 -8) inv
+                  &q* ([] 0 0 8 -8) inv
+                  , 0.01
         |expand-branch3 $ quote
           defn expand-branch3 (level from v a b c minimal-seg)
             let
@@ -403,3 +455,25 @@
                   expand-branch3 (dec level) p0 branch-a a b c minimal-seg
                   expand-branch3 (dec level) p0 branch-b a b c minimal-seg
                   expand-branch3 (dec level) p0 branch-c a b c minimal-seg
+        |expand-branch4 $ quote
+          defn expand-branch4 (level from v a b c d minimal-seg)
+            let
+                branch-base v
+                branch-a $ &q* v a
+                branch-b $ &q* v b
+                branch-c $ &q* v c
+                branch-d $ &q* v d
+                p0 $ &q+ from branch-base
+                p1 $ &q+ from branch-a
+                p2 $ &q+ from branch-b
+                p3 $ &q+ from branch-c
+                p4 $ &q+ from branch-d
+                current $ [] ([] from p0)
+              if
+                or (<= level 0)
+                  &< (q-length2 v) minimal-seg
+                , current $ concat current
+                  expand-branch4 (dec level) p0 branch-a a b c d minimal-seg
+                  expand-branch4 (dec level) p0 branch-b a b c d minimal-seg
+                  expand-branch4 (dec level) p0 branch-c a b c d minimal-seg
+                  expand-branch4 (dec level) p0 branch-d a b c d minimal-seg
