@@ -2,13 +2,13 @@
 Play ruled surface
 ----
 
-> Based on [Quatrefoil](https://github.com/Quamolit/quatrefoil.calcit).
+> Based on [Quatrefoil](https://github.com/Quatrefoil-GL/quatrefoil).
 
-Demo http://repo.quamolit.org/play-ruled-surface/
+Demo https://r.tiye.me/Quatrefoil-GL/play-ruled-surface/
 
 ### Workflow
 
-https://github.com/Quamolit/quatrefoil-workflow
+https://github.com/Quatrefoil-GL/quatrefoil-workflow
 
 ### License
 
