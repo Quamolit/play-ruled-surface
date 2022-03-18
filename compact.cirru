@@ -12,7 +12,9 @@
           quatrefoil.core :refer $ defcomp >> hslx
           quatrefoil.comp.control :refer $ comp-pin-point
           quatrefoil.app.materials :refer $ cover-line
-          quatrefoil.math :refer $ v-scale v+ &v+ &q+ &q- &q* q-inverse q-length2
+          quatrefoil.math :refer $ v-scale v+ &v+ &v- &q+ &q- &q* q-inverse q-length2
+          app.comp.fractal-line :refer $ comp-fractal-line
+          app.comp.tabs :refer $ comp-tabs
       :defs $ {}
         |comp-container $ quote
           defcomp comp-container (store)
@@ -22,11 +24,9 @@
                 state $ either (:data states)
                   {} $ :tab :fractal
               scene ({})
-                perspective-camera $ {} (:fov 45)
-                  :aspect $ / js/window.innerWidth js/window.innerHeight
-                  :near 0.1
-                  :far 1000
+                perspective-camera $ {} (:fov 45) (:near 0.1) (:far 1000)
                   :position $ [] 0 0 100
+                  :aspect $ / js/window.innerWidth js/window.innerHeight
                 comp-tabs
                   {}
                     :tabs $ [] :ruled-surface :fractal
@@ -35,14 +35,12 @@
                   fn (tab d!)
                     d! cursor $ assoc state :tab tab
                 case-default (:tab state)
-                  text $ {}
+                  text $ {} (:size 2) (:height 0.5)
                     :text $ str "\"Unknown tab " (:tab state)
                     :position $ [] 0 0 0
                     :material $ {} (:kind :mesh-lambert) (:color 0xffff33) (:opacity 1)
-                    :size 2
-                    :height 0.5
                   :ruled-surface $ comp-ruled-surface (>> states :ruled)
-                  :fractal $ comp-fractal (>> states :fractal)
+                  :fractal $ comp-fractal-line (>> states :fractal)
                 group
                   {} $ :position ([] -10 0 20)
                   point-light $ {} (:color 0xffff33) (:intensity 2) (:distance 100)
@@ -53,35 +51,6 @@
                   :position $ [] 20 40 50
                 ; point-light $ {} (:color 0xffffff) (:intensity 2) (:distance 200)
                   :position $ [] 0 60 0
-        |&v- $ quote
-          defn &v- (a b)
-            let[] (x y z) a $ let[] (x2 y2 z2) b
-              [] (- x x2) (- y y2) (- z z2)
-        |comp-tabs $ quote
-          defcomp comp-tabs (options on-change)
-            let
-                selected-tab $ :selected options
-                tabs $ :tabs options
-                position $ :position options
-              group ({}) & $ -> tabs
-                map-indexed $ fn (idx tab)
-                  group
-                    {} $ :position
-                      &v- position $ [] 0 (* 6 idx) 0
-                    box $ {} (:width 8) (:height 4) (:depth 0.4)
-                      :position $ [] 0 0 0
-                      :material $ {} (:kind :mesh-lambert)
-                        :color $ if (= tab selected-tab) 0x555533 0x333333
-                        :opacity 0.5
-                        :transparent true
-                      :event $ {}
-                        :click $ fn (e d!) (on-change tab d!)
-                    text $ {}
-                      :text $ str tab
-                      :position $ [] -4 0 1
-                      :material $ {} (:kind :mesh-lambert) (:color 0xffffaa) (:opacity 0.4) (:transparent true)
-                      :size 1.4
-                      :height 0.1
         |comp-ruled-surface $ quote
           defcomp comp-ruled-surface (states)
             let
@@ -101,31 +70,23 @@
                   / 1 step
               group ({})
                 comp-pin-point
-                  {}
+                  {} (:speed 0.1) (:color 0xffffaa)
                     :position $ :s0 state
-                    :speed 0.1
-                    :color 0xffffaa
                   fn (p d!)
                     d! cursor $ assoc state :s0 p
                 comp-pin-point
-                  {}
+                  {} (:speed 0.1) (:color 0xffffaa)
                     :position $ :s1 state
-                    :speed 0.1
-                    :color 0xffffaa
                   fn (p d!)
                     d! cursor $ assoc state :s1 p
                 comp-pin-point
-                  {}
+                  {} (:speed 0.1) (:color 0xffffaa)
                     :position $ :e0 state
-                    :speed 0.1
-                    :color 0xffffaa
                   fn (p d!)
                     d! cursor $ assoc state :e0 p
                 comp-pin-point
-                  {}
+                  {} (:speed 0.1) (:color 0xffffaa)
                     :position $ :e1 state
-                    :speed 0.1
-                    :color 0xffffaa
                   fn (p d!)
                     d! cursor $ assoc state :e1 p
                 line $ {}
@@ -144,13 +105,97 @@
                         &v+ (:s0 state) (v-scale v0 idx)
                         &v+ (:s1 state) (v-scale v1 idx)
                       :position $ [] 0 0 0
-                      :material $ {} (:kind :mesh-line)
+                      :material $ {} (:kind :mesh-line) (:transparent true) (:opacity 0.9) (:lineWidth 0.4)
                         :color $ hslx
                           * 360 $ js/Math.random
                           , 100 80
-                        :transparent true
-                        :opacity 0.9
-                        :lineWidth 0.4
+    |app.updater $ {}
+      :ns $ quote
+        ns app.updater $ :require
+          quatrefoil.cursor :refer $ update-states
+      :defs $ {}
+        |updater $ quote
+          defn updater (store op op-data)
+            case-default op store $ :states (update-states store op-data)
+    |app.main $ {}
+      :ns $ quote
+        ns app.main $ :require
+          "\"@quamolit/quatrefoil-utils" :refer $ inject-tree-methods
+          quatrefoil.core :refer $ render-canvas! *global-tree clear-cache! init-renderer! handle-key-event handle-control-events
+          app.comp.container :refer $ comp-container
+          app.updater :refer $ [] updater
+          "\"three" :as THREE
+          touch-control.core :refer $ render-control! control-states start-control-loop! clear-control-loop!
+          "\"mobile-detect" :default mobile-detect
+          "\"bottom-tip" :default hud!
+          "\"./calcit.build-errors" :default build-errors
+      :defs $ {}
+        |render-app! $ quote
+          defn render-app! () (; println "|Render app:")
+            render-canvas! (comp-container @*store) dispatch!
+        |main! $ quote
+          defn main! () (load-console-formatter!) (inject-tree-methods)
+            let
+                canvas-el $ js/document.querySelector |canvas
+              init-renderer! canvas-el $ {} (:background 0x110022)
+            render-app!
+            add-watch *store :changes $ fn (store prev) (render-app!)
+            set! js/window.onkeydown handle-key-event
+            when mobile? (render-control!) (handle-control-events)
+            println "|App started!"
+        |*store $ quote
+          defatom *store $ {}
+            :states $ {}
+              :cursor $ []
+        |dispatch! $ quote
+          defn dispatch! (op op-data)
+            if (list? op)
+              recur :states $ [] op op-data
+              let
+                  store $ updater @*store op op-data
+                ; js/console.log |Dispatch: op op-data store
+                reset! *store store
+        |reload! $ quote
+          defn reload! () $ if (some? build-errors) (hud! "\"error" build-errors)
+            do (hud! "\"ok~" nil) (clear-cache!)
+              when mobile? (clear-control-loop!) (handle-control-events)
+              remove-watch *store :changes
+              add-watch *store :changes $ fn (store prev) (render-app!)
+              render-app!
+              set! js/window.onkeydown handle-key-event
+              println "|Code updated."
+        |mobile? $ quote
+          def mobile? $ .!mobile (new mobile-detect js/window.navigator.userAgent)
+    |app.comp.fractal-line $ {}
+      :ns $ quote
+        ns app.comp.fractal-line $ :require
+          quatrefoil.alias :refer $ group box sphere point-light ambient-light perspective-camera scene text line tube mesh-line
+          quatrefoil.core :refer $ defcomp >> hslx
+          quatrefoil.comp.control :refer $ comp-pin-point
+          quatrefoil.app.materials :refer $ cover-line
+          quatrefoil.math :refer $ v-scale v+ &v+ &q+ &q- &q* q-inverse q-length2
+          app.comp.tabs :refer $ comp-tabs
+      :defs $ {}
+        |comp-fractal-line $ quote
+          defn comp-fractal-line (states)
+            let
+                cursor $ :cursor states
+                state $ or (:data states)
+                  {} $ :shape :zero
+              group ({})
+                comp-tabs
+                  {}
+                    :selected $ :shape state
+                    :tabs $ [] :ice :fly-city :cable-stayed :water-caltrop :lamp-tree :wormhole :fold-snow :ingot :chain 
+                    :position $ [] -55 20 0
+                  fn (tab d!)
+                    d! cursor $ assoc state :shape tab
+                line $ {}
+                  :points $ prepend
+                    build-fractal-path $ :shape state
+                    [] 0 0 0 0
+                  :position $ [] 5 -10 0
+                  :material $ {} (:kind :line-basic) (:color 0xffa6a0) (:transparent true) (:opacity 0.6) (:linewidth 0.1)
         |build-fractal-path $ quote
           defn build-fractal-path (tab)
             case-default tab
@@ -251,26 +296,6 @@
                   fold-line5 (dec level) (&q+ base branch-c) (&q- branch-d branch-c) a b c d e full' minimal-seg
                   fold-line5 (dec level) (&q+ base branch-d) (&q- branch-e branch-d) a b c d e full' minimal-seg
                   fold-line5 (dec level) (&q+ base branch-e) (&q- v branch-e) a b c d e full' minimal-seg
-        |comp-fractal $ quote
-          defn comp-fractal (states)
-            let
-                cursor $ :cursor states
-                state $ or (:data states)
-                  {} $ :shape :zero
-              group ({})
-                comp-tabs
-                  {}
-                    :selected $ :shape state
-                    :tabs $ [] :ice :fly-city :cable-stayed :water-caltrop :lamp-tree :wormhole :fold-snow :ingot :chain 
-                    :position $ [] -55 20 0
-                  fn (tab d!)
-                    d! cursor $ assoc state :shape tab
-                line $ {}
-                  :points $ prepend
-                    build-fractal-path $ :shape state
-                    [] 0 0 0 0
-                  :position $ [] 5 -10 0
-                  :material $ {} (:kind :line-basic) (:color 0xffa6a0) (:transparent true) (:opacity 0.6) (:linewidth 0.1)
         |fold-line5-caltrop $ quote
           defn fold-line5-caltrop (level base v a b c d e full' minimal-seg)
             let
@@ -293,60 +318,37 @@
                     &q- branch-e $ noted "\"has typo here but got really interesting result" branch-e
                     , a b c d e full' minimal-seg
                   fold-line5-caltrop (dec level) (&q+ base branch-e) (&q- v branch-e) a b c d e full' minimal-seg
-    |app.updater $ {}
+    |app.comp.tabs $ {}
       :ns $ quote
-        ns app.updater $ :require
-          quatrefoil.cursor :refer $ update-states
+        ns app.comp.tabs $ :require
+          quatrefoil.alias :refer $ group box sphere point-light ambient-light perspective-camera scene text line tube mesh-line
+          quatrefoil.core :refer $ defcomp >> hslx
+          quatrefoil.comp.control :refer $ comp-pin-point
+          quatrefoil.app.materials :refer $ cover-line
+          quatrefoil.math :refer $ v-scale v+ &v+ &v- &q+ &q- &q* q-inverse q-length2
       :defs $ {}
-        |updater $ quote
-          defn updater (store op op-data)
-            case-default op store $ :states (update-states store op-data)
-    |app.main $ {}
-      :ns $ quote
-        ns app.main $ :require
-          "\"@quamolit/quatrefoil-utils" :refer $ inject-tree-methods
-          quatrefoil.core :refer $ render-canvas! *global-tree clear-cache! init-renderer! handle-key-event handle-control-events
-          app.comp.container :refer $ comp-container
-          app.updater :refer $ [] updater
-          "\"three" :as THREE
-          touch-control.core :refer $ render-control! control-states start-control-loop! clear-control-loop!
-          "\"mobile-detect" :default mobile-detect
-          "\"bottom-tip" :default hud!
-          "\"./calcit.build-errors" :default build-errors
-      :defs $ {}
-        |render-app! $ quote
-          defn render-app! () (; println "|Render app:")
-            render-canvas! (comp-container @*store) dispatch!
-        |main! $ quote
-          defn main! () (load-console-formatter!) (inject-tree-methods)
+        |comp-tabs $ quote
+          defcomp comp-tabs (options on-change)
             let
-                canvas-el $ js/document.querySelector |canvas
-              init-renderer! canvas-el $ {} (:background 0x110022)
-            render-app!
-            add-watch *store :changes $ fn (store prev) (render-app!)
-            set! js/window.onkeydown handle-key-event
-            when mobile? (render-control!) (handle-control-events)
-            println "|App started!"
-        |*store $ quote
-          defatom *store $ {}
-            :states $ {}
-              :cursor $ []
-        |dispatch! $ quote
-          defn dispatch! (op op-data)
-            if (list? op)
-              recur :states $ [] op op-data
-              let
-                  store $ updater @*store op op-data
-                ; js/console.log |Dispatch: op op-data store
-                reset! *store store
-        |reload! $ quote
-          defn reload! () $ if (some? build-errors) (hud! "\"error" build-errors)
-            do (hud! "\"ok~" nil) (clear-cache!)
-              when mobile? (clear-control-loop!) (handle-control-events)
-              remove-watch *store :changes
-              add-watch *store :changes $ fn (store prev) (render-app!)
-              render-app!
-              set! js/window.onkeydown handle-key-event
-              println "|Code updated."
-        |mobile? $ quote
-          def mobile? $ .!mobile (new mobile-detect js/window.navigator.userAgent)
+                selected-tab $ :selected options
+                tabs $ :tabs options
+                position $ :position options
+              group ({}) & $ -> tabs
+                map-indexed $ fn (idx tab)
+                  group
+                    {} $ :position
+                      &v- position $ [] 0 (* 5 idx) 0
+                    box $ {} (:width 8) (:height 4) (:depth 0.4)
+                      :position $ [] 0 0 0
+                      :material $ {} (:kind :mesh-lambert)
+                        :color $ if (= tab selected-tab) 0x555533 0x333333
+                        :opacity 0.5
+                        :transparent true
+                      :event $ {}
+                        :click $ fn (e d!) (on-change tab d!)
+                    text $ {}
+                      :text $ str tab
+                      :position $ [] -4 0 1
+                      :material $ {} (:kind :mesh-lambert) (:color 0xffffaa) (:opacity 0.4) (:transparent true)
+                      :size 1.4
+                      :height 0.1
