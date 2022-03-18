@@ -180,6 +180,23 @@
               :ingot $ fold-line4 10 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 0 10 10) ([] 0 5 0 20) ([] 0 5 0 10) ([] 0 0 10 20)
                 q-inverse $ [] 0 0 0 30
                 , 0.16
+              :chain $ fold-line2 16 ([] 0 0 0 0) ([] 100 0 0 0) ([] 0 3.75 7.5 15) ([] 0 -3.75 7.5 15)
+                q-inverse $ [] 0 0 0 30
+                , 0.0008
+        |fold-line2 $ quote
+          defn fold-line2 (level base v a b full' minimal-seg)
+            let
+                v' $ &q* v full'
+                branch-a $ &q* v' a
+                branch-b $ &q* v' b
+              if
+                or (<= level 0)
+                  &< (q-length2 v) minimal-seg
+                [] (&q+ base branch-a) (&q+ base branch-b) (&q+ base v)
+                concat
+                  fold-line2 (dec level) base branch-a a b full' minimal-seg
+                  fold-line2 (dec level) (&q+ base branch-a) (&q- branch-b branch-a) a b full' minimal-seg
+                  fold-line2 (dec level) (&q+ base branch-b) (&q- v branch-b) a b full' minimal-seg
         |fold-line3 $ quote
           defn fold-line3 (level base v a b c full' minimal-seg)
             let
@@ -244,7 +261,7 @@
                 comp-tabs
                   {}
                     :selected $ :shape state
-                    :tabs $ [] :ice :fly-city :cable-stayed :water-caltrop :lamp-tree :wormhole :fold-snow :ingot 
+                    :tabs $ [] :ice :fly-city :cable-stayed :water-caltrop :lamp-tree :wormhole :fold-snow :ingot :chain 
                     :position $ [] -55 20 0
                   fn (tab d!)
                     d! cursor $ assoc state :shape tab
