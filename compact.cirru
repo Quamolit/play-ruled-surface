@@ -369,4 +369,37 @@
       :defs $ {}
         |comp-fractal-tree $ quote
           defn comp-fractal-tree (states)
-            group $ {}
+            group ({}) & $ -> (build-fractal-tree)
+              map $ fn (path)
+                line $ {} (:points path)
+                  :position $ [] 0 0 0
+                  :material $ {} (:kind :mesh-line) (:color 0xffa6a0) (:transparent false) (:opacity 1) (:linewidth 0.3)
+        |build-fractal-tree $ quote
+          defn build-fractal-tree () $ let
+              inv $ q-inverse ([] 0 0 0 12)
+            concat
+              [] $ [] ([] 0 0 0) ([] 0 50 0 0)
+              expand-branch3 7 ([] 0 0 0 0) ([] 0 50 0 0)
+                &q* ([] 4 0 0 -6) inv
+                &q* ([] -2.8 0 -4 -6) inv
+                &q* ([] -2.8 0 4 -6) inv
+                , 0.16
+        |expand-branch3 $ quote
+          defn expand-branch3 (level from v a b c minimal-seg)
+            let
+                branch-base v
+                branch-a $ &q* v a
+                branch-b $ &q* v b
+                branch-c $ &q* v c
+                p0 $ &q+ from branch-base
+                p1 $ &q+ from branch-a
+                p2 $ &q+ from branch-b
+                p3 $ &q+ from branch-c
+                current $ [] ([] from p0)
+              if
+                or (<= level 0)
+                  &< (q-length2 v) minimal-seg
+                , current $ concat current
+                  expand-branch3 (dec level) p0 branch-a a b c minimal-seg
+                  expand-branch3 (dec level) p0 branch-b a b c minimal-seg
+                  expand-branch3 (dec level) p0 branch-c a b c minimal-seg
