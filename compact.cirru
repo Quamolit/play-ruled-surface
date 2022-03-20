@@ -549,7 +549,7 @@
         |lerp-chord $ quote
           defn lerp-chord (p1 p2)
             let
-                n 100
+                n 40
                 d $ &q- p2 (wo-log p1)
                 unit $ wo-log
                   &q* d $ [] 0 0 0 (/ 1 n)
@@ -558,9 +558,9 @@
                   let
                       p $ &q+ p1
                         &q* unit $ [] 0 0 0 idx
-                      d0 $ &q- ([] 0 0 0 0) p
                       ratio $ / idx n
-                      y-ratio $ sqrt
-                        - 0.25 $ pow (- 0.5 ratio) 2
-                    &q+ p $ &q* d0 ([] 0 0 0 y-ratio)
+                    &q+
+                      &q* p1 $ [] 0 0 0
+                        pow (- 1 ratio) 2
+                      &q* p2 $ [] 0 0 0 (pow ratio 2)
                 append p2
