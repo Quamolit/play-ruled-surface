@@ -508,7 +508,7 @@
                         d! cursor $ assoc state :fibers pairs
                 group ({}) & $ -> (:fibers state)
                   map $ fn (pair)
-                    let[] (p1 p2) pair $ group ({})
+                    let[] (p1 p2 angle) pair $ group ({})
                       ; sphere $ {} (:position p1) (:radius 1) (:width-segments 10) (:height-segments 10)
                         :position $ [] 0 0 0
                         :material $ {} (:kind :mesh-lambert) (:color 0xff8080) (:opacity 0.6)
@@ -519,7 +519,9 @@
                         :points $ lerp-chord (conj p1 0) (conj p2 0)
                         :position $ [] 0 0 0
                         :material $ {} (:kind :mesh-line)
-                          :color $ hslx (rand 360) (rand-between 60 80) (rand-between 60 80)
+                          :color $ hslx
+                            -> angle (/ &PI) (* 180)
+                            , 90 (rand-between 40 75)
                           :transparent true
                           :opacity 0.9
                           :depthTest true
@@ -545,7 +547,7 @@
                 * r2 $ cos angle2
                 , dy2
                   * r2 $ sin angle2
-            [] p1 p2
+            [] p1 p2 angle2
         |lerp-chord $ quote
           defn lerp-chord (p1 p2)
             let
