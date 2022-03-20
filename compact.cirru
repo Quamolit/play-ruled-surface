@@ -16,6 +16,7 @@
           app.comp.fractal-line :refer $ comp-fractal-line
           app.comp.fractal-tree :refer $ comp-fractal-tree
           app.comp.tabs :refer $ comp-tabs
+          app.comp.chord-fiber :refer $ comp-chord-fiber
       :defs $ {}
         |comp-container $ quote
           defcomp comp-container (store)
@@ -30,7 +31,7 @@
                   :aspect $ / js/window.innerWidth js/window.innerHeight
                 comp-tabs
                   {}
-                    :tabs $ [] :ruled-surface :fractal-line :fractal-tree
+                    :tabs $ [] :ruled-surface :fractal-line :fractal-tree :chord-fiber
                     :selected $ :tab state
                     :position $ [] -40 0 0
                   fn (tab d!)
@@ -43,6 +44,7 @@
                   :ruled-surface $ comp-ruled-surface (>> states :ruled)
                   :fractal-line $ comp-fractal-line (>> states :fractal-line)
                   :fractal-tree $ comp-fractal-tree (>> states :fractal-tree)
+                  :chord-fiber $ comp-chord-fiber (>> states :chord-fiber)
                 group
                   {} $ :position ([] -10 0 20)
                   point-light $ {} (:color 0xffff33) (:intensity 2) (:distance 100)
@@ -477,3 +479,88 @@
                   expand-branch4 (dec level) p0 branch-b a b c d minimal-seg
                   expand-branch4 (dec level) p0 branch-c a b c d minimal-seg
                   expand-branch4 (dec level) p0 branch-d a b c d minimal-seg
+    |app.comp.chord-fiber $ {}
+      :ns $ quote
+        ns app.comp.chord-fiber $ :require
+          quatrefoil.alias :refer $ group box sphere point-light ambient-light perspective-camera scene text line tube mesh-line
+          quatrefoil.core :refer $ defcomp >> hslx
+          quatrefoil.comp.control :refer $ comp-pin-point
+          quatrefoil.app.materials :refer $ cover-line
+          quatrefoil.math :refer $ v-scale v+ &v+ &q+ &q- &q* q-inverse q-length2
+          app.comp.tabs :refer $ comp-tabs
+          "\"@calcit/std" :refer $ rand-between rand
+      :defs $ {}
+        |comp-chord-fiber $ quote
+          defn comp-chord-fiber (states)
+            let
+                cursor $ :cursor states
+                state $ or (:data states)
+                  {} $ :fibers ([])
+              group ({})
+                sphere $ {} (:radius 1) (:width-segments 10) (:height-segments 10)
+                  :position $ [] 0 0 0
+                  :material $ {} (:kind :mesh-lambert) (:color 0x808080) (:opacity 0.6)
+                  :on $ {}
+                    :click $ fn (e d!)
+                      let
+                          pairs $ -> (range 50)
+                            map $ fn (idx) (generate-segment)
+                        d! cursor $ assoc state :fibers pairs
+                group ({}) & $ -> (:fibers state)
+                  map $ fn (pair)
+                    let[] (p1 p2) pair $ group ({})
+                      ; sphere $ {} (:position p1) (:radius 1) (:width-segments 10) (:height-segments 10)
+                        :position $ [] 0 0 0
+                        :material $ {} (:kind :mesh-lambert) (:color 0xff8080) (:opacity 0.6)
+                      ; sphere $ {} (:position p2) (:radius 1) (:width-segments 10) (:height-segments 10)
+                        :position $ [] 0 0 0
+                        :material $ {} (:kind :mesh-lambert) (:color 0x8080ff) (:opacity 0.2) (:transparent true)
+                      mesh-line $ {}
+                        :points $ lerp-chord (conj p1 0) (conj p2 0)
+                        :position $ [] 0 0 0
+                        :material $ {} (:kind :mesh-line)
+                          :color $ hslx (rand 360) (rand-between 60 80) (rand-between 60 80)
+                          :transparent true
+                          :opacity 0.9
+                          :depthTest true
+                          :lineWidth 0.5
+        |generate-segment $ quote
+          defn generate-segment () $ let
+              r 50
+              bottom 8
+              dy $ - (rand bottom) r
+              dy2 $ - r
+                rand $ - (* 2 r) bottom
+              angle $ rand-between 0 (* 2 &PI)
+              angle2 $ rand-between 0 (* 2 &PI)
+              r1 $ sqrt
+                - (* r r) (* dy dy)
+              p1 $ []
+                * r1 $ cos angle
+                , dy
+                  * r1 $ sin angle
+              r2 $ sqrt
+                - (* r r) (* dy2 dy2)
+              p2 $ []
+                * r2 $ cos angle2
+                , dy2
+                  * r2 $ sin angle2
+            [] p1 p2
+        |lerp-chord $ quote
+          defn lerp-chord (p1 p2)
+            let
+                n 100
+                d $ &q- p2 (wo-log p1)
+                unit $ wo-log
+                  &q* d $ [] 0 0 0 (/ 1 n)
+              -> (range n)
+                map $ fn (idx)
+                  let
+                      p $ &q+ p1
+                        &q* unit $ [] 0 0 0 idx
+                      d0 $ &q- ([] 0 0 0 0) p
+                      ratio $ / idx n
+                      y-ratio $ sqrt
+                        - 0.25 $ pow (- 0.5 ratio) 2
+                    &q+ p $ &q* d0 ([] 0 0 0 y-ratio)
+                append p2
