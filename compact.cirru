@@ -124,7 +124,7 @@
     |app.main $ {}
       :ns $ quote
         ns app.main $ :require
-          "\"@quamolit/quatrefoil-utils" :refer $ inject-tree-methods
+          "\"@quatrefoil/utils" :refer $ inject-tree-methods
           quatrefoil.core :refer $ render-canvas! *global-tree clear-cache! init-renderer! handle-key-event handle-control-events
           app.comp.container :refer $ comp-container
           app.updater :refer $ [] updater
