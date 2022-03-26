@@ -8,7 +8,7 @@
     |app.comp.container $ {}
       :ns $ quote
         ns app.comp.container $ :require
-          quatrefoil.alias :refer $ group box sphere point-light ambient-light perspective-camera scene text line tube mesh-line
+          quatrefoil.alias :refer $ group box sphere point-light ambient-light scene text line tube mesh-line
           quatrefoil.core :refer $ defcomp >> hslx
           quatrefoil.comp.control :refer $ comp-pin-point
           quatrefoil.app.materials :refer $ cover-line
@@ -26,9 +26,6 @@
                 state $ either (:data states)
                   {} $ :tab :fractal-line
               scene ({})
-                perspective-camera $ {} (:fov 45) (:near 0.1) (:far 1000)
-                  :position $ [] 0 0 100
-                  :aspect $ / js/window.innerWidth js/window.innerHeight
                 comp-tabs
                   {}
                     :tabs $ [] :ruled-surface :fractal-line :fractal-tree :chord-fiber
@@ -133,15 +130,19 @@
           "\"mobile-detect" :default mobile-detect
           "\"bottom-tip" :default hud!
           "\"./calcit.build-errors" :default build-errors
+          quatrefoil.dsl.object3d-dom :refer $ set-perspective-camera!
       :defs $ {}
         |render-app! $ quote
           defn render-app! () (; println "|Render app:")
             render-canvas! (comp-container @*store) dispatch!
         |main! $ quote
           defn main! () (load-console-formatter!) (inject-tree-methods)
+            set-perspective-camera! $ {} (:fov 45) (:near 0.1) (:far 1000)
+              :position $ [] 0 0 100
+              :aspect $ / js/window.innerWidth js/window.innerHeight
             let
                 canvas-el $ js/document.querySelector |canvas
-              init-renderer! canvas-el $ {} (:background 0x110022)
+              init-renderer! canvas-el $ {} (:background 0x110022) (:shadow-map? false)
             render-app!
             add-watch *store :changes $ fn (store prev) (render-app!)
             set! js/window.onkeydown handle-key-event
