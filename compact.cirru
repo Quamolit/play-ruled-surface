@@ -17,6 +17,7 @@
           app.comp.fractal-tree :refer $ comp-fractal-tree
           app.comp.tabs :refer $ comp-tabs
           app.comp.chord-fiber :refer $ comp-chord-fiber
+          app.comp.cycloid :refer $ comp-cycloid-mesh
       :defs $ {}
         |comp-container $ quote
           defcomp comp-container (store)
@@ -28,7 +29,7 @@
               scene ({})
                 comp-tabs
                   {}
-                    :tabs $ [] :ruled-surface :fractal-line :fractal-tree :chord-fiber
+                    :tabs $ [] :ruled-surface :fractal-line :fractal-tree :chord-fiber :cycloid-mesh
                     :selected $ :tab state
                     :position $ [] -40 0 0
                   fn (tab d!)
@@ -42,6 +43,7 @@
                   :fractal-line $ comp-fractal-line (>> states :fractal-line)
                   :fractal-tree $ comp-fractal-tree (>> states :fractal-tree)
                   :chord-fiber $ comp-chord-fiber (>> states :chord-fiber)
+                  :cycloid-mesh $ comp-cycloid-mesh (>> states :chord-fiber)
                 group
                   {} $ :position ([] -10 0 20)
                   point-light $ {} (:color 0xffff33) (:intensity 2) (:distance 100)
@@ -563,3 +565,50 @@
                         pow (- 1 ratio) 2
                       &q* p2 $ [] 0 0 0 (pow ratio 2)
                 append p2
+    |app.comp.cycloid $ {}
+      :ns $ quote
+        ns app.comp.cycloid $ :require
+          quatrefoil.alias :refer $ group box sphere point-light ambient-light perspective-camera scene text line tube mesh-line line-segments
+          quatrefoil.core :refer $ defcomp >> hslx
+          quatrefoil.comp.control :refer $ comp-pin-point
+          quatrefoil.app.materials :refer $ cover-line
+          quatrefoil.math :refer $ v-scale v+ &v+ &q+ &q- &q* q-inverse q-length2
+      :defs $ {}
+        |gen-trail $ quote
+          defn gen-trail () $ let
+              r1 10
+              theta1 0.09
+              r2 5
+              theta2 0.12
+              r3 5
+              theta3 0.16
+              size 1000
+              calc-position $ fn (idx)
+                let
+                    v1 $ []
+                      * r1 $ cos (* idx theta1)
+                      * r1 $ sin (* idx theta1)
+                      , 0
+                    v2 $ []
+                      * r2 $ cos (* idx theta2)
+                      , 0
+                        * r2 $ sin (* idx theta2)
+                    v3 $ [] 9
+                      * r3 $ cos (* idx theta3)
+                      * r3 $ sin (* idx theta3)
+                  v+ v1 v2 v3
+            -> (range size)
+              map $ fn (idx)
+                [] (calc-position idx)
+                  calc-position $ + idx 20
+        |comp-cycloid-mesh $ quote
+          defn comp-cycloid-mesh (states)
+            let
+                cursor $ :cursor states
+                state $ or (:data states)
+                  {} $ :shape :zero
+              group ({})
+                line-segments $ {}
+                  :segments $ gen-trail
+                  :position $ [] 0 0 0
+                  :material $ {} (:kind :line-basic) (:color 0xffc6a0) (:transparent true) (:opacity 0.8) (:linewidth 0.1)
