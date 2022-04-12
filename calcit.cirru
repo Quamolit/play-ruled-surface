@@ -6046,6 +6046,7 @@
                     |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649698948775)
                       :data $ {}
                         |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698948775) (:text |comp-pin-point)
+                        |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755437126) (:text |comp-value)
                 |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649698948775)
                   :data $ {}
                     |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698948775) (:text |quatrefoil.app.materials)
@@ -6074,35 +6075,20 @@
               |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699122435) (:text |gen-trail)
               |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699122435)
                 :data $ {}
+                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755532714) (:text |r1)
+                  |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755534112) (:text |theta1)
+                  |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755535891) (:text |r2)
+                  |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755537704) (:text |theta2)
+                  |o $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755540496) (:text |r3)
+                  |q $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755541979) (:text |theta3)
+                  |s $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755542999) (:text |size)
+                  |t $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756301153) (:text |jump)
+                  |u $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757091963) (:text |v)
               |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699124266)
                 :data $ {}
                   |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699124837) (:text |let)
                   |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699125095)
                     :data $ {}
-                      |T $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699125240)
-                        :data $ {}
-                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699126786) (:text |r1)
-                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699128258) (:text |10)
-                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699130567)
-                        :data $ {}
-                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699141017) (:text |theta1)
-                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700144982) (:text |0.09)
-                      |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699146793)
-                        :data $ {}
-                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699148458) (:text |r2)
-                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700052454) (:text |5)
-                      |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699156340)
-                        :data $ {}
-                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699157364) (:text |theta2)
-                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700148996) (:text |0.12)
-                      |q $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699656412)
-                        :data $ {}
-                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699657838) (:text |r3)
-                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700060091) (:text |5)
-                      |s $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699659888)
-                        :data $ {}
-                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699663475) (:text |theta3)
-                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700152104) (:text |0.16)
                       |t $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649700243637)
                         :data $ {}
                           |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700247133) (:text |calc-position)
@@ -6133,7 +6119,7 @@
                                                       |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649700251058)
                                                         :data $ {}
                                                           |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |*)
-                                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |idx)
+                                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757096884) (:text |t)
                                                           |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |theta1)
                                               |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649700251058)
                                                 :data $ {}
@@ -6145,7 +6131,7 @@
                                                       |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649700251058)
                                                         :data $ {}
                                                           |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |*)
-                                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |idx)
+                                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757096052) (:text |t)
                                                           |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |theta1)
                                               |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |0)
                                       |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649700251058)
@@ -6164,7 +6150,7 @@
                                                       |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649700251058)
                                                         :data $ {}
                                                           |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |*)
-                                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |idx)
+                                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757097897) (:text |t)
                                                           |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |theta2)
                                               |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |0)
                                               |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649700251058)
@@ -6177,7 +6163,7 @@
                                                       |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649700251058)
                                                         :data $ {}
                                                           |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |*)
-                                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |idx)
+                                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757098734) (:text |t)
                                                           |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |theta2)
                                       |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649700251058)
                                         :data $ {}
@@ -6196,7 +6182,7 @@
                                                       |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649700251058)
                                                         :data $ {}
                                                           |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |*)
-                                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |idx)
+                                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757099525) (:text |t)
                                                           |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |theta3)
                                               |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649700251058)
                                                 :data $ {}
@@ -6208,18 +6194,22 @@
                                                       |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649700251058)
                                                         :data $ {}
                                                           |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |*)
-                                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |idx)
+                                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757101380) (:text |t)
                                                           |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |theta3)
+                                      |D $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649757085309)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757086530) (:text |t)
+                                          |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649757087213)
+                                            :data $ {}
+                                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757088197) (:text |&*)
+                                              |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757089915) (:text |idx)
+                                              |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757090919) (:text |v)
                                   |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649700251058)
                                     :data $ {}
                                       |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |v+)
                                       |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |v1)
                                       |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |v2)
                                       |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700251058) (:text |v3)
-                      |sT $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649700388362)
-                        :data $ {}
-                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700388362) (:text |size)
-                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700388362) (:text |1000)
                   |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699172280)
                     :data $ {}
                       |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699173392) (:text |->)
@@ -6250,7 +6240,7 @@
                                         :data $ {}
                                           |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700259732) (:text |idx)
                                           |D $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700263009) (:text |+)
-                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700275516) (:text |20)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756298747) (:text |jump)
           |comp-cycloid-mesh $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649698928915)
             :data $ {}
               |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698933500) (:text |defn)
@@ -6282,64 +6272,852 @@
                                   |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698934579) (:text |states)
                               |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649698934579)
                                 :data $ {}
+                                  |uT $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755481098)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756889042) (:text |:v)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756890499) (:text |1)
                                   |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698934579) (:text |{})
                                   |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649698934579)
                                     :data $ {}
                                       |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698934579) (:text |:shape)
                                       |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698934579) (:text |:zero)
-                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649698934579)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755481098)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755485176) (:text |:r1)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755481098) (:text |10)
+                                  |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755481098)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755486484) (:text |:theta1)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755481098) (:text |0.09)
+                                  |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755481098)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755487816) (:text |:r2)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755481098) (:text |5)
+                                  |q $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755481098)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755489218) (:text |:theta2)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755481098) (:text |0.12)
+                                  |s $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755481098)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755490546) (:text |:r3)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757160540) (:text |0)
+                                  |t $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755481098)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755492932) (:text |:theta3)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755481098) (:text |0.16)
+                                  |u $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755481098)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755495552) (:text |:size)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757684423) (:text |600)
+                                  |v $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756312633)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756319610) (:text |:jump)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756316001) (:text |10)
+                      |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756196330)
+                        :data $ {}
+                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756198567) (:text |theta-bound)
+                          |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756201174)
+                            :data $ {}
+                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756201174) (:text |[])
+                              |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756201174) (:text |0.001)
+                              |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756583932) (:text |0.6)
+                      |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756232786)
+                        :data $ {}
+                          |T $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756234029)
+                            :data $ {}
+                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756234029) (:text |hslx)
+                              |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756234029) (:text |200)
+                              |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756234029) (:text |90)
+                              |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756234029) (:text |70)
+                          |D $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756235335) (:text |color)
+                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756509660)
                     :data $ {}
-                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698934579) (:text |group)
-                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649698934579)
+                      |T $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649698934579)
                         :data $ {}
-                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698934579) (:text |{})
-                      |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649698934579)
-                        :data $ {}
-                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700227908) (:text |line-segments)
+                          |gT $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                            :data $ {}
+                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |comp-value)
+                              |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |{})
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |:label)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text ||r2)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |:radius)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |1)
+                                  |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |:speed)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |0.2)
+                                  |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |:fract-length)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |2)
+                                  |q $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |:opacity)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |0.8)
+                                  |s $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |:show-text?)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |true)
+                                  |t $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |:color)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |color)
+                                  |u $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |:value)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |:r2)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |state)
+                                  |v $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |:position)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |50)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |25)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |0)
+                                  |w $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |:bound)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |1)
+                                          |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                            :data $ {}
+                                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |:r1)
+                                              |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |state)
+                              |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |fn)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |v)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |d!)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |d!)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |cursor)
+                                      |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758529227)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |assoc)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |state)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |:r2)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758529227) (:text |v)
+                          |gj $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                            :data $ {}
+                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |comp-value)
+                              |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |{})
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |:label)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text ||r3)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |:radius)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |1)
+                                  |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |:speed)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |0.2)
+                                  |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |:fract-length)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |2)
+                                  |q $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |:opacity)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |0.8)
+                                  |s $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |:show-text?)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |true)
+                                  |t $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |:color)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |color)
+                                  |u $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |:value)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |:r3)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |state)
+                                  |v $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |:position)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |50)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |30)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |0)
+                                  |w $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |:bound)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |0)
+                                          |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                            :data $ {}
+                                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |:r2)
+                                              |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |state)
+                              |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |fn)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |v)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |d!)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |d!)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |cursor)
+                                      |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758533809)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |assoc)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |state)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |:r3)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758533809) (:text |v)
+                          |iT $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755839417)
+                            :data $ {}
+                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |comp-value)
+                              |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755839417)
+                                :data $ {}
+                                  |sT $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756084835)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756084835) (:text |:fract-length)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756778078) (:text |4)
+                                  |sj $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756217859)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756217859) (:text |:bound)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756217859) (:text |theta-bound)
+                                  |sr $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756258566)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756258566) (:text |:color)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756258566) (:text |color)
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |{})
+                                  |X $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758516165)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758516165) (:text |:label)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758516165) (:text ||th2)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755839417)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |:radius)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |1)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755839417)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |:speed)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758555677) (:text |0.0003)
+                                  |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755839417)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |:opacity)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |0.8)
+                                  |q $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755839417)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |:show-text?)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |true)
+                                  |t $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755839417)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |:value)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755839417)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755850262) (:text |:theta2)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |state)
+                                  |u $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755839417)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |:position)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755839417)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758129771) (:text |30)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755841974) (:text |25)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |0)
+                              |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755839417)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |fn)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755839417)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |v)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |d!)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755839417)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |d!)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |cursor)
+                                      |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755839417)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |assoc)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |state)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755848042) (:text |:theta2)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755839417) (:text |v)
+                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698934579) (:text |group)
                           |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649698934579)
                             :data $ {}
                               |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698934579) (:text |{})
-                              |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649698934579)
+                              |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756519181)
                                 :data $ {}
-                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649700229874) (:text |:segments)
-                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699101976)
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756520548) (:text |:position)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756525059)
                                     :data $ {}
-                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699104486) (:text |gen-trail)
-                              |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649698934579)
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756525059) (:text |[])
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756526687) (:text |0)
+                                      |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756528705) (:text |-10)
+                                      |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756525059) (:text |0)
+                          |g $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
+                            :data $ {}
+                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |comp-value)
+                              |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
                                 :data $ {}
-                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698934579) (:text |:position)
-                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649698934579)
+                                  |wT $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755603061)
                                     :data $ {}
-                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698934579) (:text |[])
-                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699859164) (:text |0)
-                                      |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699860361) (:text |0)
-                                      |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698934579) (:text |0)
-                              |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649698934579)
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755604990) (:text |:show-text?)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755605524) (:text |true)
+                                  |x5 $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756275275)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756275275) (:text |:color)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756275275) (:text |color)
+                                  |xD $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755632655)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755632655) (:text |:value)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755632655)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755632655) (:text |:r1)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755632655) (:text |state)
+                                  |xT $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755622828)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755622828) (:text |:position)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755622828)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755622828) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758112579) (:text |50)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755704358) (:text |20)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755622828) (:text |0)
+                                  |xj $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755626140)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755626140) (:text |:bound)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755626140)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755626140) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755641299) (:text |1)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755626140) (:text |20)
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |{})
+                                  |X $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758503128)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758503128) (:text |:label)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758503128) (:text ||r1)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |:radius)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |1)
+                                  |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |:speed)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |0.2)
+                                  |v $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |:fract-length)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |2)
+                                  |w $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |:opacity)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |0.8)
+                              |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
                                 :data $ {}
-                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649698934579) (:text |:material)
-                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699816412)
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |fn)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
                                     :data $ {}
-                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699816412) (:text |{})
-                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699816412)
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755648153) (:text |v)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |d!)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |d!)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |cursor)
+                                      |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
                                         :data $ {}
-                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699816412) (:text |:kind)
-                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699816412) (:text |:line-basic)
-                                      |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699816412)
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |assoc)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |state)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755651023) (:text |:r1)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755673104) (:text |v)
+                          |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
+                            :data $ {}
+                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |comp-value)
+                              |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
+                                :data $ {}
+                                  |wT $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755603061)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755604990) (:text |:show-text?)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755605524) (:text |true)
+                                  |x5 $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756075108)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756075108) (:text |:fract-length)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756776250) (:text |4)
+                                  |x9 $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756221241)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756221241) (:text |:bound)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756221241) (:text |theta-bound)
+                                  |xB $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756266479)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756266479) (:text |:color)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756266479) (:text |color)
+                                  |xD $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755632655)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755632655) (:text |:value)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755632655)
                                         :data $ {}
-                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699816412) (:text |:color)
-                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699850710) (:text |0xffc6a0)
-                                      |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699816412)
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755857002) (:text |:theta1)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755632655) (:text |state)
+                                  |xT $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755622828)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755622828) (:text |:position)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755622828)
                                         :data $ {}
-                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699816412) (:text |:transparent)
-                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699816412) (:text |true)
-                                      |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699816412)
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755622828) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758125317) (:text |30)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755704358) (:text |20)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755622828) (:text |0)
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |{})
+                                  |X $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758507597)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758507597) (:text |:label)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758507597) (:text ||th1)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |:radius)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |1)
+                                  |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |:speed)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758557304) (:text |0.0003)
+                                  |w $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |:opacity)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |0.8)
+                              |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |fn)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755648153) (:text |v)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |d!)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |d!)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |cursor)
+                                      |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755456877)
                                         :data $ {}
-                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699816412) (:text |:opacity)
-                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699848809) (:text |0.8)
-                                      |q $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649699816412)
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |assoc)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755456877) (:text |state)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755805161) (:text |:theta1)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755673104) (:text |v)
+                          |k $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755865274)
+                            :data $ {}
+                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |comp-value)
+                              |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755865274)
+                                :data $ {}
+                                  |sT $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756087342)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756087342) (:text |:fract-length)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756780175) (:text |4)
+                                  |sj $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756214671)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756214671) (:text |:bound)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756214671) (:text |theta-bound)
+                                  |sr $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756253056)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756253056) (:text |:color)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756253056) (:text |color)
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |{})
+                                  |X $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649758524459)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758524459) (:text |:label)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758524459) (:text ||th3)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755865274)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |:radius)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |1)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755865274)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |:speed)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756782342) (:text |0.001)
+                                  |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755865274)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |:opacity)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |0.8)
+                                  |q $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755865274)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |:show-text?)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |true)
+                                  |t $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755865274)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |:value)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755865274)
                                         :data $ {}
-                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699816412) (:text |:linewidth)
-                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649699816412) (:text |0.1)
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755872498) (:text |:theta3)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |state)
+                                  |u $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755865274)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |:position)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755865274)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758133233) (:text |30)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755886601) (:text |30)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |0)
+                              |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755865274)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |fn)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755865274)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |v)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |d!)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755865274)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |d!)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |cursor)
+                                      |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649755865274)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |assoc)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |state)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755874058) (:text |:theta3)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649755865274) (:text |v)
+                      |D $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756511823) (:text |group)
+                      |L $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756512227)
+                        :data $ {}
+                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756512524) (:text |{})
+                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                        :data $ {}
+                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |line-segments)
+                          |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                            :data $ {}
+                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |{})
+                              |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:segments)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |gen-trail)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:r1)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |state)
+                                      |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:theta1)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |state)
+                                      |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:r2)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |state)
+                                      |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:theta2)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |state)
+                                      |q $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:r3)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |state)
+                                      |s $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:theta3)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |state)
+                                      |t $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:size)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |state)
+                                      |u $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:jump)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |state)
+                                      |v $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649757052446)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757052763) (:text |:v)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757053601) (:text |state)
+                              |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:position)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |[])
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |0)
+                                      |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |0)
+                                      |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |0)
+                              |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:material)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |{})
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:kind)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:line-basic)
+                                      |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:color)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |0xffc6a0)
+                                      |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:transparent)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |true)
+                                      |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:opacity)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |0.8)
+                                      |q $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756516327)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |:linewidth)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756516327) (:text |0.1)
+                      |X $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756848878)
+                        :data $ {}
+                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756850023) (:text |group)
+                          |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756850311)
+                            :data $ {}
+                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756850670) (:text |{})
+                              |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756927766)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756927766) (:text |:position)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756927766)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756927766) (:text |[])
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758379757) (:text |-10)
+                                      |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758389525) (:text |15)
+                                      |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756927766) (:text |0)
+                          |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                            :data $ {}
+                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |comp-value)
+                              |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |{})
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:radius)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |1)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:speed)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |1)
+                                  |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:opacity)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |0.8)
+                                  |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:show-text?)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |true)
+                                  |q $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:label)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text ||jump)
+                                  |s $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:fract-length)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |0)
+                                  |t $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:color)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |color)
+                                  |u $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:bound)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |1)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |200)
+                                  |v $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:value)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:jump)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |state)
+                                  |w $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:position)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |40)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |10)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |0)
+                              |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |fn)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |v)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |d!)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |d!)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |cursor)
+                                      |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |assoc)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |state)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:jump)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |v)
+                          |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                            :data $ {}
+                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |comp-value)
+                              |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |{})
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:radius)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |1)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:speed)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649757518398) (:text |0.1)
+                                  |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:opacity)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |0.8)
+                                  |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:show-text?)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |true)
+                                  |q $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:label)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756901190) (:text ||v)
+                                  |s $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:fract-length)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756903086) (:text |2)
+                                  |t $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:color)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |color)
+                                  |u $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:bound)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756907094) (:text |0.01)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756909846) (:text |10)
+                                  |v $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:value)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756910945) (:text |:v)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |state)
+                                  |w $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:position)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756917026) (:text |50)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |10)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |0)
+                              |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |fn)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |v)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |d!)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |d!)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |cursor)
+                                      |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |assoc)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |state)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756912305) (:text |:v)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |v)
+                          |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                            :data $ {}
+                              |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |comp-value)
+                              |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |{})
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:radius)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |1)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:speed)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758028448) (:text |10)
+                                  |l $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:opacity)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |0.8)
+                                  |o $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:show-text?)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |true)
+                                  |q $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:label)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758044803) (:text ||size)
+                                  |s $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:fract-length)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758042729) (:text |0)
+                                  |t $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:color)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |color)
+                                  |u $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:bound)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758038776) (:text |600)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758033623) (:text |4000)
+                                  |v $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:value)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758046849) (:text |:size)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |state)
+                                  |w $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |:position)
+                                      |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |[])
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758051050) (:text |60)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |10)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |0)
+                              |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                :data $ {}
+                                  |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |fn)
+                                  |b $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |v)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |d!)
+                                  |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                    :data $ {}
+                                      |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |d!)
+                                      |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |cursor)
+                                      |h $ {} (:type :expr) (:by |-pxyJ-2j) (:at 1649756853247)
+                                        :data $ {}
+                                          |T $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |assoc)
+                                          |b $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |state)
+                                          |h $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649758048821) (:text |:size)
+                                          |l $ {} (:type :leaf) (:by |-pxyJ-2j) (:at 1649756853247) (:text |v)
         :configs $ {}
   :configs $ {} (:reload-fn |app.main/reload!) (:port 6001) (:output |src) (:compact-output? true) (:storage-key |calcit.cirru) (:version |0.0.4)
     :modules $ [] |touch-control/ |pointed-prompt/ |quatrefoil/

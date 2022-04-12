@@ -570,45 +570,106 @@
         ns app.comp.cycloid $ :require
           quatrefoil.alias :refer $ group box sphere point-light ambient-light perspective-camera scene text line tube mesh-line line-segments
           quatrefoil.core :refer $ defcomp >> hslx
-          quatrefoil.comp.control :refer $ comp-pin-point
+          quatrefoil.comp.control :refer $ comp-pin-point comp-value
           quatrefoil.app.materials :refer $ cover-line
           quatrefoil.math :refer $ v-scale v+ &v+ &q+ &q- &q* q-inverse q-length2
       :defs $ {}
         |gen-trail $ quote
-          defn gen-trail () $ let
-              r1 10
-              theta1 0.09
-              r2 5
-              theta2 0.12
-              r3 5
-              theta3 0.16
-              size 1000
-              calc-position $ fn (idx)
-                let
-                    v1 $ []
-                      * r1 $ cos (* idx theta1)
-                      * r1 $ sin (* idx theta1)
-                      , 0
-                    v2 $ []
-                      * r2 $ cos (* idx theta2)
-                      , 0
-                        * r2 $ sin (* idx theta2)
-                    v3 $ [] 9
-                      * r3 $ cos (* idx theta3)
-                      * r3 $ sin (* idx theta3)
-                  v+ v1 v2 v3
-            -> (range size)
-              map $ fn (idx)
-                [] (calc-position idx)
-                  calc-position $ + idx 20
+          defn gen-trail (r1 theta1 r2 theta2 r3 theta3 size jump v)
+            let
+                calc-position $ fn (idx)
+                  let
+                      t $ &* idx v
+                      v1 $ []
+                        * r1 $ cos (* t theta1)
+                        * r1 $ sin (* t theta1)
+                        , 0
+                      v2 $ []
+                        * r2 $ cos (* t theta2)
+                        , 0
+                          * r2 $ sin (* t theta2)
+                      v3 $ [] 9
+                        * r3 $ cos (* t theta3)
+                        * r3 $ sin (* t theta3)
+                    v+ v1 v2 v3
+              -> (range size)
+                map $ fn (idx)
+                  [] (calc-position idx)
+                    calc-position $ + idx jump
         |comp-cycloid-mesh $ quote
           defn comp-cycloid-mesh (states)
             let
                 cursor $ :cursor states
                 state $ or (:data states)
-                  {} $ :shape :zero
+                  {} (:shape :zero) (:r1 10) (:theta1 0.09) (:r2 5) (:theta2 0.12) (:r3 0) (:theta3 0.16) (:size 600) (:v 1) (:jump 10)
+                theta-bound $ [] 0.001 0.6
+                color $ hslx 200 90 70
               group ({})
+                group
+                  {} $ :position ([] 0 -10 0)
+                  comp-value
+                    {} (:label |r1) (:radius 1) (:speed 0.2) (:fract-length 2) (:opacity 0.8) (:show-text? true) (:color color)
+                      :value $ :r1 state
+                      :position $ [] 50 20 0
+                      :bound $ [] 1 20
+                    fn (v d!)
+                      d! cursor $ assoc state :r1 v
+                  comp-value
+                    {} (:label |r2) (:radius 1) (:speed 0.2) (:fract-length 2) (:opacity 0.8) (:show-text? true) (:color color)
+                      :value $ :r2 state
+                      :position $ [] 50 25 0
+                      :bound $ [] 1 (:r1 state)
+                    fn (v d!)
+                      d! cursor $ assoc state :r2 v
+                  comp-value
+                    {} (:label |r3) (:radius 1) (:speed 0.2) (:fract-length 2) (:opacity 0.8) (:show-text? true) (:color color)
+                      :value $ :r3 state
+                      :position $ [] 50 30 0
+                      :bound $ [] 0 (:r2 state)
+                    fn (v d!)
+                      d! cursor $ assoc state :r3 v
+                  comp-value
+                    {} (:label |th1) (:radius 1) (:speed 0.0003) (:opacity 0.8) (:show-text? true) (:fract-length 4) (:bound theta-bound) (:color color)
+                      :value $ :theta1 state
+                      :position $ [] 30 20 0
+                    fn (v d!)
+                      d! cursor $ assoc state :theta1 v
+                  comp-value
+                    {} (:label |th2) (:radius 1) (:speed 0.0003) (:opacity 0.8) (:show-text? true) (:fract-length 4) (:bound theta-bound) (:color color)
+                      :value $ :theta2 state
+                      :position $ [] 30 25 0
+                    fn (v d!)
+                      d! cursor $ assoc state :theta2 v
+                  comp-value
+                    {} (:label |th3) (:radius 1) (:speed 0.001) (:opacity 0.8) (:show-text? true) (:fract-length 4) (:bound theta-bound) (:color color)
+                      :value $ :theta3 state
+                      :position $ [] 30 30 0
+                    fn (v d!)
+                      d! cursor $ assoc state :theta3 v
+                group
+                  {} $ :position ([] -10 15 0)
+                  comp-value
+                    {} (:radius 1) (:speed 1) (:opacity 0.8) (:show-text? true) (:label |jump) (:fract-length 0) (:color color)
+                      :bound $ [] 1 200
+                      :value $ :jump state
+                      :position $ [] 40 10 0
+                    fn (v d!)
+                      d! cursor $ assoc state :jump v
+                  comp-value
+                    {} (:radius 1) (:speed 0.1) (:opacity 0.8) (:show-text? true) (:label |v) (:fract-length 2) (:color color)
+                      :bound $ [] 0.01 10
+                      :value $ :v state
+                      :position $ [] 50 10 0
+                    fn (v d!)
+                      d! cursor $ assoc state :v v
+                  comp-value
+                    {} (:radius 1) (:speed 10) (:opacity 0.8) (:show-text? true) (:label |size) (:fract-length 0) (:color color)
+                      :bound $ [] 600 4000
+                      :value $ :size state
+                      :position $ [] 60 10 0
+                    fn (v d!)
+                      d! cursor $ assoc state :size v
                 line-segments $ {}
-                  :segments $ gen-trail
+                  :segments $ gen-trail (:r1 state) (:theta1 state) (:r2 state) (:theta2 state) (:r3 state) (:theta3 state) (:size state) (:jump state) (:v state)
                   :position $ [] 0 0 0
                   :material $ {} (:kind :line-basic) (:color 0xffc6a0) (:transparent true) (:opacity 0.8) (:linewidth 0.1)
